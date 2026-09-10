@@ -59,7 +59,7 @@
       "id": "bat-dau",
       "icon": "🚀",
       "name": "Bắt đầu sử dụng",
-      "template": "steps",
+      "template": "grid",
       "tint": true,
       "lead": "Bộ tài liệu giao cho người dùng mới trong tuần đầu triển khai. Đi theo đúng thứ tự này.",
       "docs": [
@@ -106,7 +106,7 @@
       "id": "quy-trinh",
       "icon": "✅",
       "name": "Quy trình và mục tiêu",
-      "template": "rows",
+      "template": "grid",
       "tint": false,
       "lead": "Hai module hay được đưa vào giai đoạn hai của dự án triển khai.",
       "docs": [
@@ -153,7 +153,7 @@
       "id": "base",
       "icon": "🧱",
       "name": "Lark Base",
-      "template": "stack",
+      "template": "grid",
       "tint": true,
       "lead": "Lộ trình từ hiểu cấu trúc dữ liệu tới đóng gói thành ứng dụng cho người dùng cuối.",
       "docs": [
@@ -199,9 +199,8 @@
       "id": "ai",
       "icon": "🤖",
       "name": "AI trong Lark",
-      "template": "tabs",
+      "template": "grid",
       "tint": false,
-      "center": true,
       "lead": "Chia hai nhánh: năng lực AI có sẵn của Lark, và các giải pháp AI bên thứ ba cắm vào Base.",
       "subgroups": [
         {
@@ -328,7 +327,7 @@
       "id": "quan-tri",
       "icon": "🛡️",
       "name": "Quản trị và bảo mật",
-      "template": "panels",
+      "template": "grid",
       "tint": true,
       "lead": "Phần IT và ban lãnh đạo của khách sẽ hỏi. Nên chuẩn bị trước khi vào vòng đánh giá bảo mật.",
       "docs": [
