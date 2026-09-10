@@ -1,0 +1,5 @@
+source-docs/
+.scan/
+.DS_Store
+__pycache__/
+*.pyc

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light only">
+<title>Thư viện Lark tiếng Việt</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --tint: #f3f6fc;
+  --ink: #01143e;
+  --text: #10162b;
+  --muted: #6a7183;
+  --faint: #99a0b0;
+  --line: #e6e9f0;
+  --line-soft: #eef1f7;
+  --brand: #3370ff;
+  --brand-dk: #1d54e0;
+  --brand-soft: #eaf0ff;
+  --warn: #c9302c;
+  --warn-soft: #fdeceb;
+}
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; background: var(--bg); }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px; line-height: 1.62; -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+/* ============ header ============ */
+header {
+  position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,.92);
+  backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--line);
+}
+.head-in { display: flex; align-items: center; gap: 28px; height: 62px; }
+.logo { font-size: 16px; font-weight: 700; letter-spacing: -.02em; white-space: nowrap; }
+.logo b { color: var(--brand); }
+nav { display: flex; gap: 22px; overflow-x: auto; flex: 1; scrollbar-width: none; }
+nav::-webkit-scrollbar { display: none; }
+.nav-item {
+  position: relative; font-size: 13.5px; font-weight: 500; color: var(--muted);
+  white-space: nowrap; padding: 20px 0; transition: color .2s;
+}
+.nav-item::before {
+  content: ""; position: absolute; right: 0; bottom: 16px; width: 0; height: 2px;
+  background: var(--brand); transition: width .35s ease;
+}
+.nav-item:hover { color: var(--text); }
+.nav-item:hover::before, .nav-item.on::before { width: 100%; left: 0; }
+.nav-item.on { color: var(--brand); font-weight: 600; }
+
+/* ============ hero ============ */
+.hero { padding: 76px 0 54px; }
+.hero-in { border-left: 3px solid var(--brand); padding-left: 26px; }
+.hero h1 { font-size: 40px; line-height: 1.16; letter-spacing: -.03em; font-weight: 700; }
+.hero h1 em { font-style: normal; color: var(--brand); }
+.hero p { margin-top: 14px; font-size: 16px; color: var(--muted); max-width: 62ch; }
+.hero .credit { margin-top: 8px; font-size: 12.5px; color: var(--faint); font-style: italic; }
+.stats { display: flex; gap: 46px; flex-wrap: wrap; margin-top: 34px; }
+.stat b { display: block; font-size: 26px; font-weight: 700; letter-spacing: -.02em; }
+.stat span { font-size: 11.5px; color: var(--faint); text-transform: uppercase; letter-spacing: .09em; }
+
+.controls { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 40px; }
+#q {
+  flex: 1; min-width: 250px; padding: 12px 16px; font: inherit; font-size: 14px;
+  border: 1px solid var(--line); border-radius: 10px; outline: none; color: var(--text);
+  background: #fff; transition: border-color .2s, box-shadow .2s;
+}
+#q:focus { border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-soft); }
+#q::placeholder { color: var(--faint); }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  padding: 9px 16px; font: inherit; font-size: 13px; font-weight: 500; color: var(--muted);
+  background: #fff; border: 1px solid var(--line); border-radius: 999px; cursor: pointer;
+  transition: all .18s;
+}
+.chip:hover { border-color: var(--brand); color: var(--brand); }
+.chip.on { background: var(--brand); border-color: var(--brand); color: #fff; }
+.hint { margin-top: 12px; font-size: 12.5px; color: var(--faint); }
+
+/* ============ section shell ============ */
+.section { padding: 74px 0; scroll-margin-top: 62px; }
+.section.tint { background: var(--tint); }
+.sec-head { margin-bottom: 34px; max-width: 70ch; }
+.sec-head h2 {
+  font-size: 27px; font-weight: 700; letter-spacing: -.025em; position: relative;
+  display: inline-flex; align-items: center; gap: 12px; padding-bottom: 9px;
+}
+.sec-ico { font-size: 22px; line-height: 1; }
+.sec-head h2::before {
+  content: ""; position: absolute; left: 0; right: 42%; bottom: 0; height: 2px; background: var(--brand);
+}
+.lead { margin-top: 10px; font-size: 14.5px; color: var(--muted); }
+.section.center .sec-head { margin-left: auto; margin-right: auto; text-align: center; }
+.section.center .sec-head h2 { justify-content: center; }
+.section.center .sec-head h2::before { left: 26%; right: 26%; }
+
+/* shared bits */
+.badges, .mini-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+.badge { font-size: 10.5px; font-weight: 600; padding: 3px 8px; border-radius: 5px; white-space: nowrap; letter-spacing: .01em; }
+.lv1 { background: var(--brand-soft); color: var(--brand-dk); }
+.lv2 { background: #fff3e0; color: #b46b00; }
+.lv3 { background: #f1ebff; color: #6b3fd4; }
+.lang { background: #f2f4f8; color: var(--muted); }
+.lock { background: var(--warn-soft); color: var(--warn); }
+.time { font-size: 12px; color: var(--faint); white-space: nowrap; }
+.go { font-size: 12.5px; font-weight: 600; color: var(--brand); }
+.arrow { color: var(--faint); font-size: 17px; transition: transform .2s, color .2s; }
+
+/* ============ 01 split ============ */
+.split { display: grid; grid-template-columns: 1.15fr 1fr; gap: 20px; align-items: stretch; }
+.feature {
+  display: flex; flex-direction: column; gap: 12px; padding: 34px 34px 30px;
+  background: var(--ink); border-radius: 16px; color: #fff; position: relative; overflow: hidden;
+  transition: transform .22s;
+}
+.feature::after {
+  content: ""; position: absolute; right: -80px; top: -90px; width: 230px; height: 230px;
+  border-radius: 50%; background: rgba(51,112,255,.22);
+}
+.feature:hover { transform: translateY(-3px); }
+.eyebrow-sm { font-size: 10.5px; font-weight: 700; letter-spacing: .16em; color: #7ea3ff; text-transform: uppercase; }
+.feature h3 { font-size: 25px; line-height: 1.25; letter-spacing: -.02em; position: relative; }
+.feature p { font-size: 14px; color: #b9c3d8; line-height: 1.65; flex: 1; position: relative; }
+.feature-foot { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; position: relative; }
+.feature .badge { background: rgba(255,255,255,.14); color: #dce4f5; }
+.feature .lock { background: rgba(255,138,132,.2); color: #ffb3ae; }
+.feature .time { color: #8d99b4; }
+.btn {
+  align-self: flex-start; margin-top: 6px; padding: 10px 20px; border-radius: 8px;
+  background: var(--brand); color: #fff; font-size: 13px; font-weight: 600; position: relative;
+  transition: background .2s;
+}
+.feature:hover .btn { background: #4a80ff; }
+.split-side { display: flex; flex-direction: column; gap: 20px; }
+.mini {
+  flex: 1; display: flex; flex-direction: column; gap: 9px; padding: 24px 24px 20px;
+  border: 1px solid var(--line); border-radius: 14px; background: #fff;
+  transition: border-color .2s, box-shadow .2s;
+}
+.mini:hover { border-color: var(--brand); box-shadow: 0 10px 28px rgba(51,112,255,.10); }
+.mini h3 { font-size: 17px; letter-spacing: -.015em; }
+.mini p { font-size: 13.5px; color: var(--muted); flex: 1; }
+
+/* ============ 02 steps ============ */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; position: relative; }
+.steps::before {
+  content: ""; position: absolute; left: 8%; right: 8%; top: 42px; height: 1px;
+  background: repeating-linear-gradient(90deg, var(--faint) 0 5px, transparent 5px 11px); opacity: .45;
+}
+.step {
+  position: relative; background: #fff; border: 1px solid var(--line); border-radius: 14px;
+  padding: 24px 22px 20px; display: flex; flex-direction: column; gap: 9px; overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+}
+.step::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; width: 46px;
+  margin: auto; background: var(--brand); transition: width .4s ease;
+}
+.step:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(1,20,62,.09); }
+.step:hover::after { width: 100%; }
+.step-n {
+  font-size: 30px; font-weight: 800; letter-spacing: -.04em; color: var(--brand);
+  opacity: .22; line-height: 1;
+}
+.step h3 { font-size: 17px; letter-spacing: -.015em; }
+.step p { font-size: 13.5px; color: var(--muted); flex: 1; }
+.step-foot { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; padding-top: 10px; border-top: 1px solid var(--line-soft); }
+.step-foot .time { margin-left: auto; }
+
+/* ============ 03 rows ============ */
+.rows { border-top: 1px solid var(--line); }
+.row {
+  display: flex; align-items: center; gap: 24px; padding: 22px 18px;
+  border-bottom: 1px solid var(--line); transition: background .18s, padding-left .18s;
+}
+.row:hover { background: #fff; padding-left: 26px; }
+.section.tint .row:hover { background: #fff; }
+.section:not(.tint) .row:hover { background: var(--tint); }
+.row-main { flex: 1; min-width: 0; }
+.row-main h3 { font-size: 16.5px; letter-spacing: -.015em; }
+.row-main p { font-size: 13.5px; color: var(--muted); margin-top: 3px; }
+.row-meta { display: flex; gap: 7px; align-items: center; flex-wrap: wrap; justify-content: flex-end; flex: 0 0 296px; }
+.row:hover .arrow { transform: translateX(5px); color: var(--brand); }
+
+/* ============ 03b panels (2-col, distinct rhythm from rows) ============ */
+.panels { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+.panel {
+  padding: 20px 4px 22px; border-top: 1px solid var(--line); transition: border-color .18s;
+}
+.panel:hover { border-color: var(--brand); }
+.panel-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.panel-head h3 { font-size: 16.5px; letter-spacing: -.015em; }
+.panel-head .arrow { flex: 0 0 auto; }
+.panel:hover .arrow { transform: translateX(4px); color: var(--brand); }
+.panel p { font-size: 13.5px; color: var(--muted); margin: 6px 0 12px; }
+.panel-foot { display: flex; gap: 7px; align-items: center; flex-wrap: wrap; }
+.panel-foot .time { margin-left: auto; }
+
+/* ============ 04 stack ============ */
+.stack { display: flex; flex-direction: column; gap: 14px; }
+.rung {
+  display: flex; gap: 22px; align-items: center; background: #fff; border: 1px solid var(--line);
+  border-left: 3px solid var(--brand); border-radius: 12px; padding: 22px 24px;
+  transition: transform .2s, box-shadow .2s;
+}
+.rung:hover { transform: translateX(5px); box-shadow: 0 10px 26px rgba(1,20,62,.08); }
+.rung-n {
+  flex: 0 0 42px; height: 42px; border-radius: 50%; background: var(--brand-soft); color: var(--brand-dk);
+  display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px;
+}
+.rung-body { flex: 1; min-width: 0; }
+.rung-body h3 { font-size: 17px; letter-spacing: -.015em; }
+.rung-body p { font-size: 13.5px; color: var(--muted); margin: 4px 0 9px; }
+.rung-foot { display: flex; gap: 7px; align-items: center; flex-wrap: wrap; }
+.rung:hover .arrow { transform: translateX(5px); color: var(--brand); }
+
+/* ============ 05 tabs + grid ============ */
+.tabs { list-style: none; padding: 0; text-align: center; margin-bottom: 26px; }
+.tab {
+  display: inline-block; margin: 0 14px 8px; padding-bottom: 5px; font-size: 13.5px; font-weight: 600;
+  color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; transition: all .2s;
+}
+.tab:hover { color: var(--text); }
+.tab.on { color: var(--brand); border-bottom-color: var(--brand); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(258px, 1fr)); gap: 18px; margin-bottom: 18px; }
+.card {
+  display: flex; flex-direction: column; gap: 9px; padding: 22px 20px 17px; background: #fff;
+  border: 1px solid var(--line); border-radius: 13px; position: relative; overflow: hidden;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+.card::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--brand);
+  transform: scaleY(0); transform-origin: top; transition: transform .28s ease;
+}
+.card:hover { transform: translateY(-3px); border-color: #d3ddf5; box-shadow: 0 14px 32px rgba(1,20,62,.10); }
+.card:hover::before { transform: scaleY(1); }
+.card h3 { font-size: 16px; letter-spacing: -.015em; line-height: 1.35; }
+.card p {
+  font-size: 13.5px; color: var(--muted); flex: 1;
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+}
+.card-foot { display: flex; justify-content: space-between; align-items: center; padding-top: 11px; border-top: 1px solid var(--line-soft); }
+.card .go { opacity: 0; transform: translateX(-4px); transition: all .2s; }
+.card:hover .go { opacity: 1; transform: none; }
+
+/* ============ 06 dark band ============ */
+.section.dark { background: var(--ink); color: #fff; }
+.section.dark .lead { color: #a7b2c9; }
+.section.dark h2::before { background: #7ea3ff; }
+.dark-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 44px; }
+.chans { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-content: start; }
+.chan {
+  padding: 18px 18px 16px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+  border-radius: 11px; position: relative;
+}
+.chan-n {
+  display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px;
+  border-radius: 50%; background: rgba(126,163,255,.18); color: #9db8ff; font-size: 11.5px; font-weight: 700;
+  margin-bottom: 8px;
+}
+.chan b { display: block; font-size: 14.5px; margin: 0 0 5px; }
+.chan span { font-size: 12.5px; color: #a7b2c9; line-height: 1.55; }
+.dsub { font-size: 10.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #7ea3ff; margin-bottom: 12px; }
+.dlink {
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px;
+  padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.1); transition: padding-left .2s;
+}
+.dlink:hover { padding-left: 8px; }
+.dlink-t { grid-column: 1; grid-row: 1; font-size: 14.5px; font-weight: 600; }
+.dlink-d {
+  grid-column: 1; grid-row: 2; font-size: 12.5px; color: #a7b2c9; line-height: 1.5;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.dlink .arrow { grid-column: 2; grid-row: 1 / 3; align-self: center; color: #6b7891; }
+.dlink:hover .arrow { transform: translateX(4px); color: #fff; }
+
+/* ============ footer ============ */
+footer { background: #000c26; color: #8791a8; padding: 34px 0; font-size: 12.5px; line-height: 1.75; }
+footer b { color: #c3ccdd; }
+.empty { display: none; padding: 70px 0; text-align: center; color: var(--faint); font-size: 14.5px; }
+.hide { display: none !important; }
+
+/* ============ responsive ============ */
+@media (max-width: 900px) {
+  .hero { padding: 48px 0 36px; }
+  .hero h1 { font-size: 30px; }
+  .split, .dark-grid, .panels { grid-template-columns: 1fr; }
+  .panel { padding: 18px 0 20px; }
+  .steps { grid-template-columns: 1fr; }
+  .steps::before { display: none; }
+  .section { padding: 54px 0; }
+  .row { flex-wrap: wrap; gap: 12px; }
+  .row-meta { flex: 1 1 100%; justify-content: flex-start; }
+  .row .arrow { display: none; }
+}
+@media (max-width: 600px) {
+  .wrap { padding: 0 16px; }
+  .head-in { gap: 16px; }
+  .stats { gap: 26px; }
+  .stat b { font-size: 21px; }
+  .grid { grid-template-columns: 1fr; }
+  .chans { grid-template-columns: 1fr; }
+  .feature { padding: 26px 22px 24px; }
+  .feature h3 { font-size: 21px; }
+  .rung { flex-wrap: wrap; gap: 14px; }
+  .rung .arrow { display: none; }
+  .card .go { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap head-in">
+    <span class="logo">Vietnamese <b>Lark's</b> library</span>
+    <nav><a class="nav-item" href="#gia-tri" data-nav="gia-tri">Định vị và giá trị</a><a class="nav-item" href="#bat-dau" data-nav="bat-dau">Bắt đầu sử dụng</a><a class="nav-item" href="#quy-trinh" data-nav="quy-trinh">Quy trình và mục tiêu</a><a class="nav-item" href="#base" data-nav="base">Lark Base</a><a class="nav-item" href="#ai" data-nav="ai">AI trong Lark</a><a class="nav-item" href="#quan-tri" data-nav="quan-tri">Quản trị và bảo mật</a><a class="nav-item" href="#ho-tro" data-nav="ho-tro">Hỗ trợ và báo lỗi</a></nav>
+  </div>
+</header>
+
+<div class="wrap hero">
+  <div class="hero-in">
+    <h1>Thư viện Lark <em>tiếng Việt</em></h1>
+    <p>Tuyển tập tài liệu Lark dành cho partner triển khai và khách hàng tại Việt Nam. Chọn chủ đề, bấm vào thẻ để mở tài liệu gốc trên Lark.</p>
+    <p class="credit">Được tổng hợp và xây dựng bởi Thinh Le</p>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>28</b><span>tài liệu</span></div>
+    <div class="stat"><b>7</b><span>chủ đề</span></div>
+    <div class="stat"><b>~7 giờ</b><span>tổng nội dung</span></div>
+    <div class="stat"><b>08/2026</b><span>cập nhật</span></div>
+  </div>
+  <div class="controls">
+    <input id="q" type="search" placeholder="Tìm theo tên tài liệu, chủ đề, từ khoá..." autocomplete="off">
+    <div class="chips"><button class="chip" data-chip="enduser">Giao cho người dùng</button><button class="chip" data-chip="admin">Cho quản trị viên</button><button class="chip" data-chip="trienkhai">Đội triển khai đọc</button></div>
+  </div>
+  <p class="hint">Chọn vai trò để lọc nhanh tài liệu liên quan tới bạn. Bấm lại để bỏ lọc.</p>
+</div>
+
+  <section class="section sec-split" id="gia-tri">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span class="sec-ico">🎯</span>Định vị và giá trị</h2>
+        <p class="lead">Dùng khi cần trả lời câu hỏi vì sao doanh nghiệp nên gom công cụ về một nền tảng.</p>
+      </div>
+      <div class="split">
+        <a class="feature item" href="https://bytedance.larkoffice.com/wiki/WGgzwj3deiBwGZka2Kic4TH6nMf" target="_blank" rel="noopener" data-aud="trienkhai" data-hay="vì sao nên chọn lark bài phân tích nỗi đau vận hành khi doanh nghiệp dùng quá nhiều công cụ rời rạc, lark giải quyết bằng cách nào, kết quả đã đo được và bài toán chi phí. tài liệu mở đầu tốt cho buổi gặp đầu tiên. cơ bản vi">
+          <span class="eyebrow-sm">Đọc trước tiên</span>
+          <h3>Vì sao nên chọn Lark</h3>
+          <p>Bài phân tích nỗi đau vận hành khi doanh nghiệp dùng quá nhiều công cụ rời rạc, Lark giải quyết bằng cách nào, kết quả đã đo được và bài toán chi phí. Tài liệu mở đầu tốt cho buổi gặp đầu tiên.</p>
+          <div class="feature-foot">
+            <div class="badges"><span class="badge lv1">Cơ bản</span><span class="badge lang">VI</span></div>
+            <span class="time">7 phút đọc</span>
+          </div>
+          <span class="btn">Mở tài liệu →</span>
+        </a>
+        <div class="split-side">
+        <a class="mini item" href="https://bytedance.larkoffice.com/wiki/SDEBw7SqdiEN4dkpfHHclVjKnAO" target="_blank" rel="noopener" data-aud="enduser" data-hay="lark favorite tips and tricks 2.0 tuyển tập mẹo theo từng khối tính năng: chat, lịch, họp, tài liệu. mỗi khối gói trong 10 phút, hợp để làm nội dung buổi training nhập môn cho khách. cơ bản vi">
+          <div class="mini-badges"><span class="badge lv1">Cơ bản</span><span class="badge lang">VI</span></div>
+          <h3>Lark Favorite Tips and Tricks 2.0</h3>
+          <p>Tuyển tập mẹo theo từng khối tính năng: chat, lịch, họp, tài liệu. Mỗi khối gói trong 10 phút, hợp để làm nội dung buổi training nhập môn cho khách.</p>
+          <span class="go">Mở tài liệu →</span>
+        </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section sec-steps tint" id="bat-dau">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span class="sec-ico">🚀</span>Bắt đầu sử dụng</h2>
+        <p class="lead">Bộ tài liệu giao cho người dùng mới trong tuần đầu triển khai. Đi theo đúng thứ tự này.</p>
+      </div>
+      <div class="steps">
+        <a class="step item" href="https://bytedance.larkoffice.com/wiki/AhdCwqXlwiXC85kFb8OcpR1Gn9c" target="_blank" rel="noopener" data-aud="enduser" data-hay="tải xuống và đăng nhập lark cài đặt trên từng nền tảng, bốn cách đăng nhập gồm email, số điện thoại, quét qr và sso, cách thêm nhiều tài khoản và đăng xuất. cơ bản vi">
+          <span class="step-n">01</span>
+          <h3>Tải xuống và đăng nhập Lark</h3>
+          <p>Cài đặt trên từng nền tảng, bốn cách đăng nhập gồm email, số điện thoại, quét QR và SSO, cách thêm nhiều tài khoản và đăng xuất.</p>
+          <div class="step-foot"><span class="badge lv1">Cơ bản</span><span class="badge lang">VI</span><span class="time">3 phút</span></div>
+        </a>
+        <a class="step item" href="https://bytedance.larkoffice.com/wiki/QQTMwLKj9iUrIAk3nHPcv6rJnke" target="_blank" rel="noopener" data-aud="admin" data-hay="workplace trên lark tổng quan workplace, cách gắn link base và biểu đồ dashboard vào trang chủ, cấu hình hiển thị ứng dụng, huy hiệu thông báo. có hướng dẫn năm bước dựng custom workplace bằng workplace builder. trung cấp vi">
+          <span class="step-n">02</span>
+          <h3>Workplace trên Lark</h3>
+          <p>Tổng quan Workplace, cách gắn link Base và biểu đồ Dashboard vào trang chủ, cấu hình hiển thị ứng dụng, huy hiệu thông báo. Có hướng dẫn năm bước dựng Custom Workplace bằng Workplace Builder.</p>
+          <div class="step-foot"><span class="badge lv2">Trung cấp</span><span class="badge lang">VI</span><span class="time">30 phút</span></div>
+        </a>
+        <a class="step item" href="https://bytedance.larkoffice.com/wiki/COHkwW7xviUiIhkBrtzcD2upnOg" target="_blank" rel="noopener" data-aud="enduser admin" data-hay="lark wiki cách dựng không gian tri thức: tạo space, xây cấu trúc trang cha và trang con, phân quyền theo space và theo vai trò. nền tảng để khách tự xây thư viện nội bộ của họ. cơ bản vi">
+          <span class="step-n">03</span>
+          <h3>Lark Wiki</h3>
+          <p>Cách dựng không gian tri thức: tạo space, xây cấu trúc trang cha và trang con, phân quyền theo space và theo vai trò. Nền tảng để khách tự xây thư viện nội bộ của họ.</p>
+          <div class="step-foot"><span class="badge lv1">Cơ bản</span><span class="badge lang">VI</span><span class="time">10 phút</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="section sec-rows" id="quy-trinh">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span class="sec-ico">✅</span>Quy trình và mục tiêu</h2>
+        <p class="lead">Hai module hay được đưa vào giai đoạn hai của dự án triển khai.</p>
+      </div>
+      <div class="rows">
+        <a class="row item" href="https://bytedance.larkoffice.com/wiki/S7XQwykI5iEfJpkWj6ScwgU2noc" target="_blank" rel="noopener" data-aud="admin" data-hay="phê duyệt (approval) từ khái niệm và vai trò cho tới thao tác của quản trị viên: tạo phiếu, thiết kế biểu mẫu, thiết kế luồng duyệt và các tuỳ chọn nâng cao. đủ để dựng quy trình duyệt đầu tiên cho khách. trung cấp vi">
+          <div class="row-main">
+            <h3>Phê duyệt (Approval)</h3>
+            <p>Từ khái niệm và vai trò cho tới thao tác của quản trị viên: tạo phiếu, thiết kế biểu mẫu, thiết kế luồng duyệt và các tuỳ chọn nâng cao. Đủ để dựng quy trình duyệt đầu tiên cho khách.</p>
+          </div>
+          <div class="row-meta"><span class="badge lv2">Trung cấp</span><span class="badge lang">VI</span><span class="time">20 phút</span></div>
+          <span class="arrow">→</span>
+        </a>
+        <a class="row item" href="https://bytedance.larkoffice.com/wiki/DcQjwnMtli4qZUk5vJmcc7sinHb" target="_blank" rel="noopener" data-aud="enduser admin" data-hay="lark okr (bản tiếng việt) okr khác kpi ở đâu, chu kỳ okr, nguyên tắc viết objective và key result, rồi bốn bước thao tác trên app okr gồm tạo, căn chỉnh, theo dõi và đánh giá. trung cấp vi">
+          <div class="row-main">
+            <h3>Lark OKR (bản tiếng Việt)</h3>
+            <p>OKR khác KPI ở đâu, chu kỳ OKR, nguyên tắc viết Objective và Key Result, rồi bốn bước thao tác trên app OKR gồm tạo, căn chỉnh, theo dõi và đánh giá.</p>
+          </div>
+          <div class="row-meta"><span class="badge lv2">Trung cấp</span><span class="badge lang">VI</span><span class="badge lock">Cần quyền truy cập</span><span class="time">45 phút</span></div>
+          <span class="arrow">→</span>
+        </a>
+        <a class="row item" href="https://bytedance.larkoffice.com/wiki/TY7zwzJ5Ui87Cbk78hpcd4Cbnvc" target="_blank" rel="noopener" data-aud="admin" data-hay="lark okr (english) bản tiếng anh cùng nội dung, dùng cho khách có đội ngũ nói tiếng anh hoặc tài liệu gửi khu vực. trung cấp en">
+          <div class="row-main">
+            <h3>Lark OKR (English)</h3>
+            <p>Bản tiếng Anh cùng nội dung, dùng cho khách có đội ngũ nói tiếng Anh hoặc tài liệu gửi khu vực.</p>
+          </div>
+          <div class="row-meta"><span class="badge lv2">Trung cấp</span><span class="badge lang">EN</span><span class="badge lock">Cần quyền truy cập</span><span class="time">40 phút</span></div>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="section sec-stack tint" id="base">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span class="sec-ico">🧱</span>Lark Base</h2>
+        <p class="lead">Lộ trình từ hiểu cấu trúc dữ liệu tới đóng gói thành ứng dụng cho người dùng cuối.</p>
+      </div>
+      <div class="stack">
+        <a class="rung item" href="https://bytedance.larkoffice.com/wiki/MupcwDh8ui0QzOkBWFNcOyM4nid" target="_blank" rel="noopener" data-aud="enduser" data-hay="nhập môn lark base field và row, sáu kiểu view gồm lưới, kanban, gantt, gallery, lịch và biểu mẫu, cách nhóm lọc sắp xếp, cùng các loại biểu đồ trên dashboard. bắt đầu từ đây trước khi đụng base app. cơ bản vi">
+          <span class="rung-n">1</span>
+          <div class="rung-body">
+            <h3>Nhập môn Lark Base</h3>
+            <p>Field và row, sáu kiểu view gồm lưới, kanban, gantt, gallery, lịch và biểu mẫu, cách nhóm lọc sắp xếp, cùng các loại biểu đồ trên dashboard. Bắt đầu từ đây trước khi đụng Base App.</p>
+            <div class="rung-foot"><span class="badge lv1">Cơ bản</span><span class="badge lang">VI</span><span class="time">20 phút đọc</span></div>
+          </div>
+          <span class="arrow">→</span>
+        </a>
+        <a class="rung item" href="https://bytedance.larkoffice.com/wiki/YNHTwGkrSislU6kkspacKr7cneh" target="_blank" rel="noopener" data-aud="trienkhai" data-hay="base app khác biệt giữa base và base app, ba tình huống mẫu là quản lý doanh nghiệp, quản lý sự kiện và crm, rồi năm bước dựng app từ logic cấu trúc tới tuỳ chỉnh giao diện. nâng cao vi">
+          <span class="rung-n">2</span>
+          <div class="rung-body">
+            <h3>Base App</h3>
+            <p>Khác biệt giữa Base và Base App, ba tình huống mẫu là quản lý doanh nghiệp, quản lý sự kiện và CRM, rồi năm bước dựng app từ logic cấu trúc tới tuỳ chỉnh giao diện.</p>
+            <div class="rung-foot"><span class="badge lv3">Nâng cao</span><span class="badge lang">VI</span><span class="badge lock">Cần quyền truy cập</span><span class="time">17 phút đọc</span></div>
+          </div>
+          <span class="arrow">→</span>
+        </a>
+        <a class="rung item" href="https://bytedance.larkoffice.com/wiki/LPGjw4PYui3egRkisvjcUnypnYf" target="_blank" rel="noopener" data-aud="trienkhai" data-hay="base extensions tiện ích mở rộng cho bảng và cho dashboard: các loại thông dụng, cách thêm và quản lý, kèm phần thực hành với docugenius là tiện ích trả phí. nâng cao vi">
+          <span class="rung-n">3</span>
+          <div class="rung-body">
+            <h3>Base Extensions</h3>
+            <p>Tiện ích mở rộng cho bảng và cho dashboard: các loại thông dụng, cách thêm và quản lý, kèm phần thực hành với DocuGenius là tiện ích trả phí.</p>
+            <div class="rung-foot"><span class="badge lv3">Nâng cao</span><span class="badge lang">VI</span><span class="time">15 phút đọc</span></div>
+          </div>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="section sec-tabs center" id="ai">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span class="sec-ico">🤖</span>AI trong Lark</h2>
+        <p class="lead">Chia hai nhánh: năng lực AI có sẵn của Lark, và các giải pháp AI bên thứ ba cắm vào Base.</p>
+      </div>
+      <ul class="tabs"><li class="tab on" data-tab="all">Tất cả</li><li class="tab" data-tab="sg0">AI gốc của Lark</li><li class="tab" data-tab="sg1">AI bên thứ ba trên Base</li></ul>
+        <div class="grid" data-sg="sg0">
+          <a class="card item" href="https://bytedance.larkoffice.com/wiki/LrV7w3iFfivDs3kzv6OclzWsnDE" target="_blank" rel="noopener" data-aud="trienkhai" data-hay="bắt đầu với lark ai bản đồ tổng thể toàn bộ năng lực ai: knowledge ai, ghi chú và dịch trong họp, điền form bằng giọng nói, nhập liệu ai, trường ai của base, plugin openclaw, lark cli và anygen. đọc trước để biết còn những gì. cơ bản vi">
+            <div class="badges"><span class="badge lv1">Cơ bản</span><span class="badge lang">VI</span><span class="badge lock">Cần quyền truy cập</span></div>
+            <h3>Bắt đầu với Lark AI</h3>
+            <p>Bản đồ tổng thể toàn bộ năng lực AI: Knowledge AI, ghi chú và dịch trong họp, điền form bằng giọng nói, nhập liệu AI, trường AI của Base, plugin OpenClaw, Lark CLI và AnyGen. Đọc trước để biết còn những gì.</p>
+            <div class="card-foot"><span class="time">20 phút đọc</span><span class="go">Mở →</span></div>
+          </a>
+          <a class="card item" href="https://bytedance.larkoffice.com/wiki/WvCywIkwriX04TkPh5scl4xHnv1" target="_blank" rel="noopener" data-aud="enduser" data-hay="lark knowledge ai trợ lý hỏi đáp trên dữ liệu doanh nghiệp. sáu tình huống thực tế từ kiểm tra tiến độ dự án tới tra cứu sop, kèm faq về nguồn dữ liệu, phạm vi quyền truy cập và chuyện dữ liệu có bị dùng để huấn luyện hay không. cơ bản vi">
+            <div class="badges"><span class="badge lv1">Cơ bản</span><span class="badge lang">VI</span></div>
+            <h3>Lark Knowledge AI</h3>
+            <p>Trợ lý hỏi đáp trên dữ liệu doanh nghiệp. Sáu tình huống thực tế từ kiểm tra tiến độ dự án tới tra cứu SOP, kèm FAQ về nguồn dữ liệu, phạm vi quyền truy cập và chuyện dữ liệu có bị dùng để huấn luyện hay không.</p>
+            <div class="card-foot"><span class="time">5 phút đọc</span><span class="go">Mở →</span></div>
+          </a>
+          <a class="card item" href="https://bytedance.larkoffice.com/wiki/O8svwzGCcilsAVkg1dhc4iDdnNe" target="_blank" rel="noopener" data-aud="enduser" data-hay="anygen anygen là gì, khác gì công cụ ai phổ thông, làm được việc gì, và ba bước bắt đầu nhanh gồm tạo nội dung, chuyển đổi chia sẻ, tái sử dụng thành tri thức. cơ bản vi">
+            <div class="badges"><span class="badge lv1">Cơ bản</span><span class="badge lang">VI</span></div>
+            <h3>AnyGen</h3>
+            <p>AnyGen là gì, khác gì công cụ AI phổ thông, làm được việc gì, và ba bước bắt đầu nhanh gồm tạo nội dung, chuyển đổi chia sẻ, tái sử dụng thành tri thức.</p>
+            <div class="card-foot"><span class="time">9 phút đọc</span><span class="go">Mở →</span></div>
+          </a>
+          <a class="card item" href="https://bytedance.larkoffice.com/wiki/A3sDwmobbiiuiFksAEycYkDRnAh" target="_blank" rel="noopener" data-aud="trienkhai" data-hay="ai trong lark base (tổng hợp) tổng quan ai tích hợp sẵn trong base và bài toán chi phí, rồi chín bước dựng trọn một hệ thống voice of customer bằng ai: tóm tắt phản hồi, tạo ticket, gắn nhãn, dịch, sinh mẫu trả lời, dashboard insight. nâng cao vi">
+            <div class="badges"><span class="badge lv3">Nâng cao</span><span class="badge lang">VI</span></div>
+            <h3>AI trong Lark Base (tổng hợp)</h3>
+            <p>Tổng quan AI tích hợp sẵn trong Base và bài toán chi phí, rồi chín bước dựng trọn một hệ thống Voice of Customer bằng AI: tóm tắt phản hồi, tạo ticket, gắn nhãn, dịch, sinh mẫu trả lời, dashboard insight.</p>
+            <div class="card-foot"><span class="time">20 phút đọc</span><span class="go">Mở →</span></div>
+          </a>
+        </div>
+        <div class="grid" data-sg="sg1">
+          <a class="card item" href="https://bytedance.larkoffice.com/wiki/HxYbwfeJkiqGpikDNkPcj81NnOb" target="_blank" rel="noopener" data-aud="trienkhai" data-hay="danh mục ứng dụng ai bên thứ ba bảng so sánh các ứng dụng ai cắm vào base theo mục tiêu sử dụng, one pager, cách đăng ký dùng thử và chi phí. vào đây trước rồi mới mở từng giải pháp bên dưới. trung cấp vi">
+            <div class="badges"><span class="badge lv2">Trung cấp</span><span class="badge lang">VI</span></div>
+            <h3>Danh mục ứng dụng AI bên thứ ba</h3>
+            <p>Bảng so sánh các ứng dụng AI cắm vào Base theo mục tiêu sử dụng, one pager, cách đăng ký dùng thử và chi phí. Vào đây trước rồi mới mở từng giải pháp bên dưới.</p>
+            <div class="card-foot"><span class="time">6 phút đọc</span><span class="go">Mở →</span></div>
+          </a>
+          <a class="card item" href="https://bytedance.larkoffice.com/wiki/TUi6wQRUIiUFg3kggGkcAoyMni2" target="_blank" rel="noopener" data-aud="trienkhai" data-hay="deepseek và openai cho base cấu hình ai field shortcuts với deepseek r1 và openai, cách lấy api key ở byteplus và openai, kèm bốn ca thực tế là crm, voc, tuyển dụng và nghiên cứu dữ liệu. nâng cao vi">
+            <div class="badges"><span class="badge lv3">Nâng cao</span><span class="badge lang">VI</span></div>
+            <h3>DeepSeek và OpenAI cho Base</h3>
+            <p>Cấu hình AI Field Shortcuts với DeepSeek R1 và OpenAI, cách lấy API key ở BytePlus và OpenAI, kèm bốn ca thực tế là CRM, VOC, tuyển dụng và nghiên cứu dữ liệu.</p>
+            <div class="card-foot"><span class="time">30 phút đọc</span><span class="go">Mở →</span></div>
+          </a>
+          <a class="card item" href="https://bytedance.larkoffice.com/wiki/Vw4lwlX2fi3iI1kj2gOcv3mGnwh" target="_blank" rel="noopener" data-aud="trienkhai" data-hay="xran: trích xuất dữ liệu đa phương thức đi xa hơn ocr, đọc hiểu ảnh và tài liệu hỗn hợp. có video hướng dẫn, hướng dẫn cài đặt, cách tính phí, các ca sử dụng và faq. nâng cao vi">
+            <div class="badges"><span class="badge lv3">Nâng cao</span><span class="badge lang">VI</span></div>
+            <h3>XRan: trích xuất dữ liệu đa phương thức</h3>
+            <p>Đi xa hơn OCR, đọc hiểu ảnh và tài liệu hỗn hợp. Có video hướng dẫn, hướng dẫn cài đặt, cách tính phí, các ca sử dụng và FAQ.</p>
+            <div class="card-foot"><span class="time">15 phút đọc</span><span class="go">Mở →</span></div>
+          </a>
+          <a class="card item" href="https://bytedance.larkoffice.com/wiki/QnUfwrXmpiO1sBkplxBcuiIJnCc" target="_blank" rel="noopener" data-aud="trienkhai" data-hay="amazon bedrock cho base dùng amazon nova trích xuất thông tin từ hình ảnh và tài liệu vào base. video hướng dẫn, cài đặt, thanh toán, các ca sử dụng và kênh hỗ trợ. nâng cao vi">
+            <div class="badges"><span class="badge lv3">Nâng cao</span><span class="badge lang">VI</span></div>
+            <h3>Amazon Bedrock cho Base</h3>
+            <p>Dùng Amazon Nova trích xuất thông tin từ hình ảnh và tài liệu vào Base. Video hướng dẫn, cài đặt, thanh toán, các ca sử dụng và kênh hỗ trợ.</p>
+            <div class="card-foot"><span class="time">10 phút đọc</span><span class="go">Mở →</span></div>
+          </a>
+          <a class="card item" href="https://bytedance.larkoffice.com/wiki/YRziwOYjBi9t1LkF5Tgcrr8qnoc" target="_blank" rel="noopener" data-aud="trienkhai" data-hay="mobi ai: xưởng sáng tạo nội dung cấu hình bằng video và bằng văn bản, cách nạp credit và dùng voucher, kèm demo các ca sinh nội dung ngay trong base. nâng cao vi">
+            <div class="badges"><span class="badge lv3">Nâng cao</span><span class="badge lang">VI</span></div>
+            <h3>Mobi AI: xưởng sáng tạo nội dung</h3>
+            <p>Cấu hình bằng video và bằng văn bản, cách nạp credit và dùng voucher, kèm demo các ca sinh nội dung ngay trong Base.</p>
+            <div class="card-foot"><span class="time">10 phút đọc</span><span class="go">Mở →</span></div>
+          </a>
+        </div>
+    </div>
+  </section>
+  <section class="section sec-panels tint" id="quan-tri">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span class="sec-ico">🛡️</span>Quản trị và bảo mật</h2>
+        <p class="lead">Phần IT và ban lãnh đạo của khách sẽ hỏi. Nên chuẩn bị trước khi vào vòng đánh giá bảo mật.</p>
+      </div>
+      <div class="panels">
+        <a class="panel item" href="https://bytedance.larkoffice.com/wiki/JK3LwhT8kiCD0EkbBBZcaRk4nkg" target="_blank" rel="noopener" data-aud="admin" data-hay="lark admin console tài liệu dài nhất trong thư viện. các loại quản trị viên, dựng phòng ban và mời thành viên, tạo vai trò quản trị, rồi lần lượt bảo mật, tuân thủ, tuỳ chỉnh thương hiệu và bộ báo cáo sử dụng. nâng cao vi">
+          <div class="panel-head">
+            <h3>Lark Admin Console</h3>
+            <span class="arrow">→</span>
+          </div>
+          <p>Tài liệu dài nhất trong thư viện. Các loại quản trị viên, dựng phòng ban và mời thành viên, tạo vai trò quản trị, rồi lần lượt bảo mật, tuân thủ, tuỳ chỉnh thương hiệu và bộ báo cáo sử dụng.</p>
+          <div class="panel-foot"><span class="badge lv3">Nâng cao</span><span class="badge lang">VI</span><span class="time">40 phút đọc</span></div>
+        </a>
+        <a class="panel item" href="https://bytedance.larkoffice.com/wiki/Cc70wbPvOikaCAkZIQccfOCAnkb" target="_blank" rel="noopener" data-aud="admin trienkhai" data-hay="quản trị bảo mật lark ai agent phân tích rủi ro theo mô hình triển khai ai agent, kiến trúc an toàn của anycross và openclaw, phương án kiểm soát tầng tiếp nhận gồm uỷ quyền ứng dụng và kiểm soát quyền api, cùng phần audit vận hành. nâng cao vi">
+          <div class="panel-head">
+            <h3>Quản trị bảo mật Lark AI Agent</h3>
+            <span class="arrow">→</span>
+          </div>
+          <p>Phân tích rủi ro theo mô hình triển khai AI Agent, kiến trúc an toàn của AnyCross và OpenClaw, phương án kiểm soát tầng tiếp nhận gồm uỷ quyền ứng dụng và kiểm soát quyền API, cùng phần audit vận hành.</p>
+          <div class="panel-foot"><span class="badge lv3">Nâng cao</span><span class="badge lang">VI</span><span class="badge lock">Cần quyền truy cập</span><span class="time">20 phút đọc</span></div>
+        </a>
+        <a class="panel item" href="https://bytedance.larkoffice.com/wiki/A4jrwr7EWihqyxkjPJMc1MK8nKb" target="_blank" rel="noopener" data-aud="admin" data-hay="ai agent security governance (english) bản tiếng anh cùng nội dung, dùng khi đội bảo mật của khách yêu cầu tài liệu tiếng anh cho vòng thẩm định. nâng cao en">
+          <div class="panel-head">
+            <h3>AI Agent Security Governance (English)</h3>
+            <span class="arrow">→</span>
+          </div>
+          <p>Bản tiếng Anh cùng nội dung, dùng khi đội bảo mật của khách yêu cầu tài liệu tiếng Anh cho vòng thẩm định.</p>
+          <div class="panel-foot"><span class="badge lv3">Nâng cao</span><span class="badge lang">EN</span><span class="badge lock">Cần quyền truy cập</span><span class="time">15 phút đọc</span></div>
+        </a>
+        <a class="panel item" href="https://bytedance.larkoffice.com/wiki/ODK0wu2e3iIqpwk9gXucsgNDnic" target="_blank" rel="noopener" data-aud="admin" data-hay="personal ai policy mẫu chính sách dùng ai cá nhân trong công việc: phân loại mức độ dùng ai, ranh giới thông tin nhạy cảm, kiểm soát chất lượng, minh bạch và checklist tra nhanh. khách có thể lấy làm khung soạn chính sách nội bộ. trung cấp en">
+          <div class="panel-head">
+            <h3>Personal AI Policy</h3>
+            <span class="arrow">→</span>
+          </div>
+          <p>Mẫu chính sách dùng AI cá nhân trong công việc: phân loại mức độ dùng AI, ranh giới thông tin nhạy cảm, kiểm soát chất lượng, minh bạch và checklist tra nhanh. Khách có thể lấy làm khung soạn chính sách nội bộ.</p>
+          <div class="panel-foot"><span class="badge lv2">Trung cấp</span><span class="badge lang">EN</span><span class="time">12 phút đọc</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="section sec-dark dark" id="ho-tro">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span class="sec-ico">🛟</span>Hỗ trợ và báo lỗi</h2>
+        <p class="lead">Khi khách gặp sự cố, gửi đúng log ngay từ lần đầu sẽ rút ngắn thời gian xử lý rất nhiều.</p>
+      </div>
+      <div class="dark-grid">
+        <div class="chans">
+          <div class="chan">
+            <span class="chan-n">1</span>
+            <b>Lark Help Center</b><span>Tìm câu trả lời qua AI, chatbot và ứng dụng trợ giúp ngay trong Lark. Nhấn Cmd K hoặc Ctrl K rồi gõ Lark Help Center.</span>
+          </div>
+          <div class="chan">
+            <span class="chan-n">2</span>
+            <b>Cộng đồng người dùng</b><span>Trao đổi kinh nghiệm sử dụng và xem người khác đã giải quyết tình huống tương tự thế nào.</span>
+          </div>
+          <div class="chan">
+            <span class="chan-n">3</span>
+            <b>Hỗ trợ khách hàng</b><span>Dùng khi sự cố không tự xử lý được. Chuẩn bị sẵn UID, MessID và file HAR theo hướng dẫn bên cạnh.</span>
+          </div>
+          <div class="chan">
+            <span class="chan-n">4</span>
+            <b>Cộng đồng nhà phát triển</b><span>Dành cho vấn đề về AnyCross và tích hợp API.</span>
+          </div>
+        </div>
+        <div class="dlinks">
+          <h4 class="dsub">Tài liệu kèm theo</h4>
+          <a class="dlink item" href="https://bytedance.larkoffice.com/wiki/OHPgwIx2LiOdBUkpUrWcZAs0nEg" target="_blank" rel="noopener" data-aud="enduser admin" data-hay="cần hỗ trợ thì tìm ai bốn kênh theo thứ tự ưu tiên: lark help center, cộng đồng người dùng, hỗ trợ khách hàng, và cộng đồng developer cho vấn đề anycross hoặc api. kèm ảnh từng bước mở help center. cơ bản vi">
+            <span class="dlink-t">Cần hỗ trợ thì tìm ai</span>
+            <span class="dlink-d">Bốn kênh theo thứ tự ưu tiên: Lark Help Center, cộng đồng người dùng, hỗ trợ khách hàng, và cộng đồng developer cho vấn đề AnyCross hoặc API. Kèm ảnh từng bước mở Help Center.</span>
+            <span class="arrow">→</span>
+          </a>
+          <a class="dlink item" href="https://bytedance.larkoffice.com/wiki/M9DkwagsSiHtNckBv5UcPhb8nMb" target="_blank" rel="noopener" data-aud="admin" data-hay="cách lấy uid và messid bật debug mode, copy user id và message id. hai thông tin bắt buộc khi mở ticket về lỗi tin nhắn. cơ bản vi">
+            <span class="dlink-t">Cách lấy UID và MessID</span>
+            <span class="dlink-d">Bật debug mode, copy user ID và message ID. Hai thông tin bắt buộc khi mở ticket về lỗi tin nhắn.</span>
+            <span class="arrow">→</span>
+          </a>
+          <a class="dlink item" href="https://bytedance.larkoffice.com/wiki/Xm2KwKLCeiVzS7kIC4FcKA3NnD1" target="_blank" rel="noopener" data-aud="admin" data-hay="cách lấy file har ghi lại toàn bộ request mạng lúc lỗi xảy ra. đính kèm file này giúp đội kỹ thuật tái hiện nhanh hơn nhiều so với mô tả bằng lời. cơ bản vi">
+            <span class="dlink-t">Cách lấy file HAR</span>
+            <span class="dlink-d">Ghi lại toàn bộ request mạng lúc lỗi xảy ra. Đính kèm file này giúp đội kỹ thuật tái hiện nhanh hơn nhiều so với mô tả bằng lời.</span>
+            <span class="arrow">→</span>
+          </a>
+          <a class="dlink item" href="https://bytedance.larkoffice.com/wiki/SERywKxG6idQxwkTC5gceuV9nqc" target="_blank" rel="noopener" data-aud="admin" data-hay="cách lấy performance record của base dùng khi base chạy chậm hoặc treo. bản ghi hiệu năng cho biết nút thắt nằm ở đâu. cơ bản vi">
+            <span class="dlink-t">Cách lấy Performance Record của Base</span>
+            <span class="dlink-d">Dùng khi Base chạy chậm hoặc treo. Bản ghi hiệu năng cho biết nút thắt nằm ở đâu.</span>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div class="wrap"><div class="empty" id="empty">Không có tài liệu nào khớp. Thử từ khoá khác hoặc bỏ bộ lọc vai trò.</div></div>
+
+<footer>
+  <div class="wrap">
+    Nguồn: knowledge base <b>Lark - Vietnamese Library</b>. Nội dung chi tiết nằm trong tài liệu gốc trên Lark, trang này chỉ là mục lục.<br>
+    Thẻ gắn nhãn <b>Cần quyền truy cập</b> hiện chưa mở chia sẻ ra ngoài tổ chức, vui lòng liên hệ người phụ trách. Cập nhật 08/2026.
+  </div>
+</footer>
+
+<script>
+(function () {
+  var q = document.getElementById('q');
+  var chips = [].slice.call(document.querySelectorAll('.chip'));
+  var tabs = [].slice.call(document.querySelectorAll('.tab'));
+  var items = [].slice.call(document.querySelectorAll('.item'));
+  var sections = [].slice.call(document.querySelectorAll('.section'));
+  var navs = [].slice.call(document.querySelectorAll('.nav-item'));
+  var empty = document.getElementById('empty');
+  var aud = null, tab = 'all';
+
+  function norm(s) {
+    return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
+  }
+
+  function apply() {
+    var term = norm(q.value.trim());
+    var shown = 0;
+    items.forEach(function (el) {
+      var okT = !term || norm(el.dataset.hay).indexOf(term) > -1;
+      var okA = !aud || el.dataset.aud.split(' ').indexOf(aud) > -1;
+      var sg = el.closest('[data-sg]');
+      var okG = !sg || tab === 'all' || sg.dataset.sg === tab;
+      var on = okT && okA && okG;
+      el.classList.toggle('hide', !on);
+      if (on) shown++;
+    });
+    document.querySelectorAll('[data-sg]').forEach(function (g) {
+      g.classList.toggle('hide', g.querySelectorAll('.item:not(.hide)').length === 0);
+    });
+    sections.forEach(function (s) {
+      s.classList.toggle('hide', s.querySelectorAll('.item:not(.hide)').length === 0);
+    });
+    navs.forEach(function (n) {
+      var sec = document.getElementById(n.dataset.nav);
+      n.classList.toggle('hide', !!sec && sec.classList.contains('hide'));
+    });
+    empty.style.display = shown === 0 ? 'block' : 'none';
+  }
+
+  q.addEventListener('input', apply);
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      aud = aud === c.dataset.chip ? null : c.dataset.chip;
+      chips.forEach(function (o) { o.classList.toggle('on', o.dataset.chip === aud); });
+      apply();
+    });
+  });
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () {
+      tab = t.dataset.tab;
+      tabs.forEach(function (o) { o.classList.toggle('on', o === t); });
+      apply();
+    });
+  });
+
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      navs.forEach(function (n) { n.classList.toggle('on', n.dataset.nav === e.target.id); });
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(function (s) { io.observe(s); });
+})();
+</script>
+</body>
+</html>
