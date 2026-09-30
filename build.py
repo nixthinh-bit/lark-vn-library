@@ -40,6 +40,12 @@ def docs_of(group):
 
 
 total_docs = sum(len(docs_of(g)) for g in data["groups"])
+LOCK_NOTE = (
+    "Thẻ gắn nhãn <b>Cần quyền truy cập</b> hiện chưa mở chia sẻ ra ngoài tổ chức, "
+    "vui lòng liên hệ người phụ trách. "
+    if any(not d["shared"] for g in data["groups"] for d in docs_of(g))
+    else ""
+)
 
 LEVEL = {"Cơ bản": "lv1", "Trung cấp": "lv2", "Nâng cao": "lv3"}
 
@@ -446,7 +452,7 @@ footer b {{ color: #cbd3e2; }}
   <div class="wrap">
     {esc(meta['credit'])}.<br>
     Nguồn: knowledge base <b>Lark - Vietnamese Library</b>. Nội dung chi tiết nằm trong tài liệu gốc trên Lark, trang này chỉ là mục lục.<br>
-    Thẻ gắn nhãn <b>Cần quyền truy cập</b> hiện chưa mở chia sẻ ra ngoài tổ chức, vui lòng liên hệ người phụ trách. Cập nhật {esc(meta['updated'])}.
+    {LOCK_NOTE}Cập nhật {esc(meta['updated'])}.
   </div>
 </footer>
 

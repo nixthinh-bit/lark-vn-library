@@ -133,7 +133,7 @@
           "level": "Trung cấp",
           "lang": "VI",
           "minutes": 45,
-          "shared": false
+          "shared": true
         },
         {
           "token": "TY7zwzJ5Ui87Cbk78hpcd4Cbnvc",
@@ -145,7 +145,7 @@
           "level": "Trung cấp",
           "lang": "EN",
           "minutes": 40,
-          "shared": false
+          "shared": true
         }
       ]
     },
@@ -179,7 +179,7 @@
           "level": "Nâng cao",
           "lang": "VI",
           "minutes": 17,
-          "shared": false
+          "shared": true
         },
         {
           "token": "LPGjw4PYui3egRkisvjcUnypnYf",
@@ -216,7 +216,7 @@
               "level": "Cơ bản",
               "lang": "VI",
               "minutes": 20,
-              "shared": false
+              "shared": true
             },
             {
               "token": "WvCywIkwriX04TkPh5scl4xHnv1",
@@ -354,7 +354,7 @@
           "level": "Nâng cao",
           "lang": "VI",
           "minutes": 20,
-          "shared": false
+          "shared": true
         },
         {
           "token": "A4jrwr7EWihqyxkjPJMc1MK8nKb",
@@ -366,7 +366,7 @@
           "level": "Nâng cao",
           "lang": "EN",
           "minutes": 15,
-          "shared": false
+          "shared": true
         },
         {
           "token": "ODK0wu2e3iIqpwk9gXucsgNDnic",
