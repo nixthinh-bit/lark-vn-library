@@ -481,8 +481,7 @@ footer b {{ color: #cbd3e2; }}
 <footer>
   <div class="wrap">
     {esc(meta['credit'])}.<br>
-    Nguồn: knowledge base <b>Lark - Vietnamese Library</b>. Nội dung chi tiết nằm trong tài liệu gốc trên Lark, trang này chỉ là mục lục.<br>
-    {LOCK_NOTE}Cập nhật {esc(meta['updated'])}.
+    Nguồn: knowledge base <b>Lark - Vietnamese Library</b>. Nội dung chi tiết nằm trong tài liệu gốc trên Lark, trang này chỉ là mục lục.{('<br>' + LOCK_NOTE) if LOCK_NOTE else ''}
   </div>
 </footer>
 
