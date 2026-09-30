@@ -105,10 +105,10 @@
     {
       "id": "quy-trinh",
       "icon": "✅",
-      "name": "Quy trình và mục tiêu",
+      "name": "Quy trình phê duyệt",
       "template": "grid",
       "tint": false,
-      "lead": "Hai module hay được đưa vào giai đoạn hai của dự án triển khai.",
+      "lead": "Module hay được đưa vào giai đoạn hai của dự án triển khai.",
       "docs": [
         {
           "token": "S7XQwykI5iEfJpkWj6ScwgU2noc",
@@ -120,31 +120,6 @@
           "level": "Trung cấp",
           "lang": "VI",
           "minutes": 20,
-          "shared": true
-        },
-        {
-          "token": "DcQjwnMtli4qZUk5vJmcc7sinHb",
-          "title": "Lark OKR (bản tiếng Việt)",
-          "desc": "OKR khác KPI ở đâu, chu kỳ OKR, nguyên tắc viết Objective và Key Result, rồi bốn bước thao tác trên app OKR gồm tạo, căn chỉnh, theo dõi và đánh giá.",
-          "audience": [
-            "enduser",
-            "admin"
-          ],
-          "level": "Trung cấp",
-          "lang": "VI",
-          "minutes": 45,
-          "shared": true
-        },
-        {
-          "token": "TY7zwzJ5Ui87Cbk78hpcd4Cbnvc",
-          "title": "Lark OKR (English)",
-          "desc": "Bản tiếng Anh cùng nội dung, dùng cho khách có đội ngũ nói tiếng Anh hoặc tài liệu gửi khu vực.",
-          "audience": [
-            "admin"
-          ],
-          "level": "Trung cấp",
-          "lang": "EN",
-          "minutes": 40,
           "shared": true
         }
       ]
