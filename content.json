@@ -3,7 +3,7 @@
     "title": "Thư viện Lark tiếng Việt",
     "subtitle": "Tuyển tập tài liệu Lark dành cho partner triển khai và khách hàng tại Việt Nam. Chọn chủ đề, bấm vào thẻ để mở tài liệu gốc trên Lark.",
     "credit": "Được tổng hợp và xây dựng bởi Thinh Le",
-    "updated": "08/2026",
+    "updated": "09/2026",
     "wiki_base": "https://bytedance.larkoffice.com/wiki/"
   },
   "audiences": [
@@ -105,10 +105,10 @@
     {
       "id": "quy-trinh",
       "icon": "✅",
-      "name": "Quy trình phê duyệt",
+      "name": "Quy trình và mục tiêu",
       "template": "grid",
       "tint": false,
-      "lead": "Module hay được đưa vào giai đoạn hai của dự án triển khai.",
+      "lead": "Hai module hay được đưa vào giai đoạn hai của dự án triển khai.",
       "docs": [
         {
           "token": "S7XQwykI5iEfJpkWj6ScwgU2noc",
@@ -120,6 +120,19 @@
           "level": "Trung cấp",
           "lang": "VI",
           "minutes": 20,
+          "shared": true
+        },
+        {
+          "token": "FriRwryWBiaCoHkAAuYc4wQ0nDe",
+          "title": "Lark OKR",
+          "desc": "OKR khác KPI ở đâu, chu kỳ OKR, nguyên tắc viết Objective và Key Result, rồi từng bước thao tác trên app OKR. Phần sau có OKR mẫu theo vai trò (CEO, Marketing, Sales, HR, R&D) và các lỗi hay gặp khi viết OKR.",
+          "audience": [
+            "enduser",
+            "admin"
+          ],
+          "level": "Trung cấp",
+          "lang": "VI",
+          "minutes": 40,
           "shared": true
         }
       ]
@@ -195,7 +208,7 @@
             },
             {
               "token": "WvCywIkwriX04TkPh5scl4xHnv1",
-              "title": "Lark Knowledge AI",
+              "title": "Lark Knowledge AI (tóm tắt)",
               "desc": "Trợ lý hỏi đáp trên dữ liệu doanh nghiệp. Sáu tình huống thực tế từ kiểm tra tiến độ dự án tới tra cứu SOP, kèm FAQ về nguồn dữ liệu, phạm vi quyền truy cập và chuyện dữ liệu có bị dùng để huấn luyện hay không.",
               "audience": [
                 "enduser"
@@ -203,6 +216,19 @@
               "level": "Cơ bản",
               "lang": "VI",
               "minutes": 5,
+              "shared": true
+            },
+            {
+              "token": "KDsOw2moYiGPMLkkwx5cBA0Fndg",
+              "title": "Lark Knowledge AI (bản đầy đủ)",
+              "desc": "Bản tiếng Việt đầy đủ, có video demo và ảnh chụp từng tình huống hỏi đáp, bảng nguồn dữ liệu được hỗ trợ và giới hạn của từng loại. Dùng khi cần trình bày chi tiết cho khách.",
+              "audience": [
+                "enduser",
+                "trienkhai"
+              ],
+              "level": "Cơ bản",
+              "lang": "VI",
+              "minutes": 8,
               "shared": true
             },
             {
@@ -227,6 +253,19 @@
               "level": "Nâng cao",
               "lang": "VI",
               "minutes": 20,
+              "shared": true
+            },
+            {
+              "token": "Kg0jwMF1fiKDbgksds6cp6GfnDh",
+              "title": "Kết nối Claude Code với Lark CLI",
+              "desc": "Hướng dẫn cho người không biết code: dán một câu vào Claude Code, duyệt bằng QR hoặc link, rồi ra lệnh cho Lark bằng tiếng Việt. Khoảng 10 phút, kèm vài câu lệnh mẫu và cách tự viết skill.",
+              "audience": [
+                "enduser",
+                "trienkhai"
+              ],
+              "level": "Cơ bản",
+              "lang": "VI",
+              "minutes": 6,
               "shared": true
             }
           ]
@@ -344,6 +383,19 @@
           "shared": true
         },
         {
+          "token": "ZV1iweZd0i6fMukaMmJcT5aenOg",
+          "title": "Năng lực và bảo mật của Lark CLI",
+          "desc": "Lark CLI làm được gì trên từng miền nghiệp vụ, hai chế độ danh tính người dùng và ứng dụng, cơ chế kiểm soát quyền và audit, cùng các nguyên tắc dùng an toàn như đặc quyền tối thiểu. Hợp để gửi đội IT khi khách hỏi về AI Agent.",
+          "audience": [
+            "admin",
+            "trienkhai"
+          ],
+          "level": "Trung cấp",
+          "lang": "VI",
+          "minutes": 10,
+          "shared": true
+        },
+        {
           "token": "ODK0wu2e3iIqpwk9gXucsgNDnic",
           "title": "Personal AI Policy",
           "desc": "Mẫu chính sách dùng AI cá nhân trong công việc: phân loại mức độ dùng AI, ranh giới thông tin nhạy cảm, kiểm soát chất lượng, minh bạch và checklist tra nhanh. Khách có thể lấy làm khung soạn chính sách nội bộ.",
@@ -431,6 +483,18 @@
           "level": "Cơ bản",
           "lang": "VI",
           "minutes": 3,
+          "shared": true
+        },
+        {
+          "token": "TZWqwUpN6igEtPkUhKdcJLjLndh",
+          "title": "AHA Doctor cho Mac",
+          "desc": "Công cụ tự chẩn đoán và sửa các lỗi thường gặp của Lark trên Mac, nhất là lỗi mạng. Có link tải bản x86 và arm64, video thao tác và cách gửi kết quả chẩn đoán cho đội hỗ trợ.",
+          "audience": [
+            "admin"
+          ],
+          "level": "Cơ bản",
+          "lang": "VI",
+          "minutes": 5,
           "shared": true
         }
       ]
