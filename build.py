@@ -39,12 +39,23 @@ def _png(name):
     return "data:image/png;base64," + base64.b64encode((HERE / "assets" / name).read_bytes()).decode()
 
 
-# Lark logo as the page cursor. Hotspot (4 3) sits on the tip of the teal wing.
-CUR1, CUR2 = _png("lark-cursor-32.png"), _png("lark-cursor-64.png")
-CURSOR_CSS = (
-    f"html, body, a, button, [role=tab] {{ cursor: url({CUR1}) 4 3, auto; "
-    f"cursor: image-set(url({CUR1}) 1x, url({CUR2}) 2x) 4 3, auto; }}"
-)
+# Lark logo as the page cursor. A static CSS cursor is the fallback (no JS, touch);
+# with a fine pointer, JS swaps it for #lc, an animated logo that follows the mouse:
+# grows in, shrinks to half and spins fast while over a doc card.
+CUR1, CUR2, CUR_BIG = _png("lark-cursor-22.png"), _png("lark-cursor-44.png"), _png("lark-cursor-64.png")
+CURSOR_CSS = f"""html, body, a, button, [role=tab] {{ cursor: url({CUR1}) 11 11, auto;
+  cursor: image-set(url({CUR1}) 1x, url({CUR2}) 2x) 11 11, auto; }}
+html.lc-on, html.lc-on * {{ cursor: none !important; }}
+#lc {{ position: fixed; left: 0; top: 0; width: 22px; height: 22px; margin: -11px 0 0 -11px;
+  pointer-events: none; z-index: 2147483647; opacity: 0; transition: opacity .2s; }}
+#lc.on {{ opacity: 1; }}
+#lc i {{ display: block; width: 100%; height: 100%; transform: scale(0);
+  transition: transform .3s cubic-bezier(.34, 1.56, .64, 1); }}
+#lc.on i {{ transform: scale(1); }}
+#lc.on.hot i {{ transform: scale(.5); }}
+#lc b {{ display: block; width: 100%; height: 100%; background: url({CUR_BIG}) center / contain no-repeat; }}
+#lc.hot b {{ animation: lc-spin .4s linear infinite; }}
+@keyframes lc-spin {{ to {{ transform: rotate(360deg); }} }}"""
 
 
 def esc(s):
@@ -534,6 +545,23 @@ footer b {{ color: #cbd3e2; }}
     }});
   }}, {{ rootMargin: '-20% 0px -70% 0px' }});
   sections.forEach(function (s) {{ io.observe(s); }});
+}})();
+(function () {{
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  var c = document.createElement('div');
+  c.id = 'lc'; c.setAttribute('aria-hidden', 'true'); c.innerHTML = '<i><b></b></i>';
+  document.body.appendChild(c);
+  document.documentElement.classList.add('lc-on');
+  var x = 0, y = 0, raf = 0;
+  function draw() {{ raf = 0; c.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)'; }}
+  addEventListener('pointermove', function (e) {{
+    x = e.clientX; y = e.clientY;
+    if (!c.classList.contains('on')) {{ draw(); c.classList.add('on'); }}
+    else if (!raf) raf = requestAnimationFrame(draw);
+    c.classList.toggle('hot', !!(e.target.closest && e.target.closest('a.item')));
+  }}, {{ passive: true }});
+  document.addEventListener('mouseleave', function () {{ c.classList.remove('on', 'hot'); }});
+  addEventListener('blur', function () {{ c.classList.remove('on', 'hot'); }});
 }})();
 </script>
 </body>
