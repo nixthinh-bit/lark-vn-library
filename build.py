@@ -7,6 +7,7 @@ Ba nhom layout, khong hon:
   dark   dai mau dam: kenh ho tro + danh sach doc  (chi nhom cuoi)
 Danh tinh moi nhom nam o header + nen tint, khong o kieu bo cuc.
 """
+import base64
 import json
 import html
 import pathlib
@@ -32,6 +33,18 @@ _FAV = (
     "</g></svg>"
 )
 FAVICON = "data:image/svg+xml," + urllib.parse.quote(_FAV)
+
+
+def _png(name):
+    return "data:image/png;base64," + base64.b64encode((HERE / "assets" / name).read_bytes()).decode()
+
+
+# Lark logo as the page cursor. Hotspot (4 3) sits on the tip of the teal wing.
+CUR1, CUR2 = _png("lark-cursor-32.png"), _png("lark-cursor-64.png")
+CURSOR_CSS = (
+    f"html, body, a, button, [role=tab] {{ cursor: url({CUR1}) 4 3, auto; "
+    f"cursor: image-set(url({CUR1}) 1x, url({CUR2}) 2x) 4 3, auto; }}"
+)
 
 
 def esc(s):
@@ -218,6 +231,7 @@ HTML = f"""<!DOCTYPE html>
 }}
 * {{ box-sizing: border-box; margin: 0; }}
 html {{ scroll-behavior: smooth; background: var(--bg); }}
+{CURSOR_CSS}
 body {{
   background: var(--bg);
   color: var(--text);
@@ -275,7 +289,7 @@ nav::-webkit-scrollbar {{ display: none; }}
 .chip {{
   -webkit-appearance: none; appearance: none;
   padding: 9px 16px; font: inherit; font-size: 13px; font-weight: 500; color: var(--muted);
-  background: #fff; border: 1px solid var(--line); border-radius: var(--r-full); cursor: pointer;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--r-full);
   transition: border-color .18s, color .18s, background .18s;
 }}
 .chip:hover {{ border-color: var(--brand); color: var(--brand); }}
@@ -333,7 +347,7 @@ nav::-webkit-scrollbar {{ display: none; }}
 .tabs {{ display: flex; flex-wrap: wrap; gap: 6px 22px; margin-bottom: 22px; }}
 .tab {{
   -webkit-appearance: none; appearance: none; background: none; border: none; font: inherit;
-  padding: 0 0 5px; font-size: 13.5px; font-weight: 600; color: var(--muted); cursor: pointer;
+  padding: 0 0 5px; font-size: 13.5px; font-weight: 600; color: var(--muted);
   border-bottom: 2px solid transparent; transition: color .2s, border-color .2s;
 }}
 .tab:hover {{ color: var(--text); }}
