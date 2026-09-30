@@ -11,8 +11,8 @@ English: [README.md](README.md)
 
 Nội dung nằm ở `content.json`, không nằm trong HTML. Để thêm hoặc sửa một tài liệu:
 
-1. Sửa `content.json`: mỗi tài liệu có tên, mô tả, đối tượng, mức độ, ngôn ngữ, thời gian đọc
-   và cờ `shared`. Có thể thêm tài liệu mới hoặc cả một nhóm mới.
+1. Sửa `content.json`: mỗi tài liệu có tên, mô tả, đối tượng, mức độ, ngôn ngữ, thời gian đọc,
+   cờ `shared` và ngày `created` (YYYY-MM-DD, ngày tạo node trên wiki). Thẻ trong mỗi nhóm xếp theo `created`, mới nhất lên đầu. Có thể thêm tài liệu mới hoặc cả một nhóm mới.
 2. Chạy lại build:
 
    ```

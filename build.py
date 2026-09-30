@@ -15,6 +15,11 @@ import urllib.parse
 HERE = pathlib.Path(__file__).parent
 data = json.loads((HERE / "content.json").read_text(encoding="utf-8"))
 meta = data["meta"]
+
+# Newest first within each group / subgroup, by wiki node creation date.
+for _g in data["groups"]:
+    for _docs in ([sg["docs"] for sg in _g["subgroups"]] if "subgroups" in _g else [_g["docs"]]):
+        _docs.sort(key=lambda d: d.get("created", ""), reverse=True)
 WIKI = meta["wiki_base"]
 
 _FAV = (

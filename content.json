@@ -30,18 +30,6 @@
       "lead": "Dùng khi cần trả lời câu hỏi vì sao doanh nghiệp nên gom công cụ về một nền tảng.",
       "docs": [
         {
-          "token": "WGgzwj3deiBwGZka2Kic4TH6nMf",
-          "title": "Vì sao nên chọn Lark",
-          "desc": "Bài phân tích nỗi đau vận hành khi doanh nghiệp dùng quá nhiều công cụ rời rạc, Lark giải quyết bằng cách nào, kết quả đã đo được và bài toán chi phí. Tài liệu mở đầu tốt cho buổi gặp đầu tiên.",
-          "audience": [
-            "trienkhai"
-          ],
-          "level": "Cơ bản",
-          "lang": "VI",
-          "minutes": 7,
-          "shared": true
-        },
-        {
           "token": "SDEBw7SqdiEN4dkpfHHclVjKnAO",
           "title": "Lark Favorite Tips and Tricks 2.0",
           "desc": "Tuyển tập mẹo theo từng khối tính năng: chat, lịch, họp, tài liệu. Mỗi khối gói trong 10 phút, hợp để làm nội dung buổi training nhập môn cho khách.",
@@ -51,7 +39,21 @@
           "level": "Cơ bản",
           "lang": "VI",
           "minutes": 10,
-          "shared": true
+          "shared": true,
+          "created": "2025-08-28"
+        },
+        {
+          "token": "WGgzwj3deiBwGZka2Kic4TH6nMf",
+          "title": "Vì sao nên chọn Lark",
+          "desc": "Bài phân tích nỗi đau vận hành khi doanh nghiệp dùng quá nhiều công cụ rời rạc, Lark giải quyết bằng cách nào, kết quả đã đo được và bài toán chi phí. Tài liệu mở đầu tốt cho buổi gặp đầu tiên.",
+          "audience": [
+            "trienkhai"
+          ],
+          "level": "Cơ bản",
+          "lang": "VI",
+          "minutes": 7,
+          "shared": true,
+          "created": "2025-08-10"
         }
       ]
     },
@@ -61,7 +63,7 @@
       "name": "Bắt đầu sử dụng",
       "template": "grid",
       "tint": true,
-      "lead": "Bộ tài liệu giao cho người dùng mới trong tuần đầu triển khai. Đi theo đúng thứ tự này.",
+      "lead": "Bộ tài liệu giao cho người dùng mới trong tuần đầu triển khai.",
       "docs": [
         {
           "token": "AhdCwqXlwiXC85kFb8OcpR1Gn9c",
@@ -73,19 +75,8 @@
           "level": "Cơ bản",
           "lang": "VI",
           "minutes": 3,
-          "shared": true
-        },
-        {
-          "token": "QQTMwLKj9iUrIAk3nHPcv6rJnke",
-          "title": "Workplace trên Lark",
-          "desc": "Tổng quan Workplace, cách gắn link Base và biểu đồ Dashboard vào trang chủ, cấu hình hiển thị ứng dụng, huy hiệu thông báo. Có hướng dẫn năm bước dựng Custom Workplace bằng Workplace Builder.",
-          "audience": [
-            "admin"
-          ],
-          "level": "Trung cấp",
-          "lang": "VI",
-          "minutes": 30,
-          "shared": true
+          "shared": true,
+          "created": "2026-06-03"
         },
         {
           "token": "COHkwW7xviUiIhkBrtzcD2upnOg",
@@ -98,7 +89,21 @@
           "level": "Cơ bản",
           "lang": "VI",
           "minutes": 10,
-          "shared": true
+          "shared": true,
+          "created": "2026-06-03"
+        },
+        {
+          "token": "QQTMwLKj9iUrIAk3nHPcv6rJnke",
+          "title": "Workplace trên Lark",
+          "desc": "Tổng quan Workplace, cách gắn link Base và biểu đồ Dashboard vào trang chủ, cấu hình hiển thị ứng dụng, huy hiệu thông báo. Có hướng dẫn năm bước dựng Custom Workplace bằng Workplace Builder.",
+          "audience": [
+            "admin"
+          ],
+          "level": "Trung cấp",
+          "lang": "VI",
+          "minutes": 30,
+          "shared": true,
+          "created": "2025-10-09"
         }
       ]
     },
@@ -111,18 +116,6 @@
       "lead": "Hai module hay được đưa vào giai đoạn hai của dự án triển khai.",
       "docs": [
         {
-          "token": "S7XQwykI5iEfJpkWj6ScwgU2noc",
-          "title": "Phê duyệt (Approval)",
-          "desc": "Từ khái niệm và vai trò cho tới thao tác của quản trị viên: tạo phiếu, thiết kế biểu mẫu, thiết kế luồng duyệt và các tuỳ chọn nâng cao. Đủ để dựng quy trình duyệt đầu tiên cho khách.",
-          "audience": [
-            "admin"
-          ],
-          "level": "Trung cấp",
-          "lang": "VI",
-          "minutes": 20,
-          "shared": true
-        },
-        {
           "token": "FriRwryWBiaCoHkAAuYc4wQ0nDe",
           "title": "Lark OKR",
           "desc": "OKR khác KPI ở đâu, chu kỳ OKR, nguyên tắc viết Objective và Key Result, rồi từng bước thao tác trên app OKR. Phần sau có OKR mẫu theo vai trò (CEO, Marketing, Sales, HR, R&D) và các lỗi hay gặp khi viết OKR.",
@@ -133,7 +126,21 @@
           "level": "Trung cấp",
           "lang": "VI",
           "minutes": 40,
-          "shared": true
+          "shared": true,
+          "created": "2026-08-10"
+        },
+        {
+          "token": "S7XQwykI5iEfJpkWj6ScwgU2noc",
+          "title": "Phê duyệt (Approval)",
+          "desc": "Từ khái niệm và vai trò cho tới thao tác của quản trị viên: tạo phiếu, thiết kế biểu mẫu, thiết kế luồng duyệt và các tuỳ chọn nâng cao. Đủ để dựng quy trình duyệt đầu tiên cho khách.",
+          "audience": [
+            "admin"
+          ],
+          "level": "Trung cấp",
+          "lang": "VI",
+          "minutes": 20,
+          "shared": true,
+          "created": "2025-10-09"
         }
       ]
     },
@@ -146,18 +153,6 @@
       "lead": "Lộ trình từ hiểu cấu trúc dữ liệu tới đóng gói thành ứng dụng cho người dùng cuối.",
       "docs": [
         {
-          "token": "MupcwDh8ui0QzOkBWFNcOyM4nid",
-          "title": "Nhập môn Lark Base",
-          "desc": "Field và row, sáu kiểu view gồm lưới, kanban, gantt, gallery, lịch và biểu mẫu, cách nhóm lọc sắp xếp, cùng các loại biểu đồ trên dashboard. Bắt đầu từ đây trước khi đụng Base App.",
-          "audience": [
-            "enduser"
-          ],
-          "level": "Cơ bản",
-          "lang": "VI",
-          "minutes": 20,
-          "shared": true
-        },
-        {
           "token": "YNHTwGkrSislU6kkspacKr7cneh",
           "title": "Base App",
           "desc": "Khác biệt giữa Base và Base App, ba tình huống mẫu là quản lý doanh nghiệp, quản lý sự kiện và CRM, rồi năm bước dựng app từ logic cấu trúc tới tuỳ chỉnh giao diện.",
@@ -167,7 +162,8 @@
           "level": "Nâng cao",
           "lang": "VI",
           "minutes": 17,
-          "shared": true
+          "shared": true,
+          "created": "2026-06-26"
         },
         {
           "token": "LPGjw4PYui3egRkisvjcUnypnYf",
@@ -179,7 +175,21 @@
           "level": "Nâng cao",
           "lang": "VI",
           "minutes": 15,
-          "shared": true
+          "shared": true,
+          "created": "2025-05-20"
+        },
+        {
+          "token": "MupcwDh8ui0QzOkBWFNcOyM4nid",
+          "title": "Nhập môn Lark Base",
+          "desc": "Field và row, sáu kiểu view gồm lưới, kanban, gantt, gallery, lịch và biểu mẫu, cách nhóm lọc sắp xếp, cùng các loại biểu đồ trên dashboard. Bắt đầu từ đây trước khi đụng Base App.",
+          "audience": [
+            "enduser"
+          ],
+          "level": "Cơ bản",
+          "lang": "VI",
+          "minutes": 20,
+          "shared": true,
+          "created": "2025-05-19"
         }
       ]
     },
@@ -195,30 +205,6 @@
           "name": "AI gốc của Lark",
           "docs": [
             {
-              "token": "LrV7w3iFfivDs3kzv6OclzWsnDE",
-              "title": "Bắt đầu với Lark AI",
-              "desc": "Bản đồ tổng thể toàn bộ năng lực AI: Knowledge AI, ghi chú và dịch trong họp, điền form bằng giọng nói, nhập liệu AI, trường AI của Base, plugin OpenClaw, Lark CLI và AnyGen. Đọc trước để biết còn những gì.",
-              "audience": [
-                "trienkhai"
-              ],
-              "level": "Cơ bản",
-              "lang": "VI",
-              "minutes": 20,
-              "shared": true
-            },
-            {
-              "token": "WvCywIkwriX04TkPh5scl4xHnv1",
-              "title": "Lark Knowledge AI (tóm tắt)",
-              "desc": "Trợ lý hỏi đáp trên dữ liệu doanh nghiệp. Sáu tình huống thực tế từ kiểm tra tiến độ dự án tới tra cứu SOP, kèm FAQ về nguồn dữ liệu, phạm vi quyền truy cập và chuyện dữ liệu có bị dùng để huấn luyện hay không.",
-              "audience": [
-                "enduser"
-              ],
-              "level": "Cơ bản",
-              "lang": "VI",
-              "minutes": 5,
-              "shared": true
-            },
-            {
               "token": "KDsOw2moYiGPMLkkwx5cBA0Fndg",
               "title": "Lark Knowledge AI (bản đầy đủ)",
               "desc": "Bản tiếng Việt đầy đủ, có video demo và ảnh chụp từng tình huống hỏi đáp, bảng nguồn dữ liệu được hỗ trợ và giới hạn của từng loại. Dùng khi cần trình bày chi tiết cho khách.",
@@ -229,31 +215,8 @@
               "level": "Cơ bản",
               "lang": "VI",
               "minutes": 8,
-              "shared": true
-            },
-            {
-              "token": "O8svwzGCcilsAVkg1dhc4iDdnNe",
-              "title": "AnyGen",
-              "desc": "AnyGen là gì, khác gì công cụ AI phổ thông, làm được việc gì, và ba bước bắt đầu nhanh gồm tạo nội dung, chuyển đổi chia sẻ, tái sử dụng thành tri thức.",
-              "audience": [
-                "enduser"
-              ],
-              "level": "Cơ bản",
-              "lang": "VI",
-              "minutes": 9,
-              "shared": true
-            },
-            {
-              "token": "A3sDwmobbiiuiFksAEycYkDRnAh",
-              "title": "AI trong Lark Base (tổng hợp)",
-              "desc": "Tổng quan AI tích hợp sẵn trong Base và bài toán chi phí, rồi chín bước dựng trọn một hệ thống Voice of Customer bằng AI: tóm tắt phản hồi, tạo ticket, gắn nhãn, dịch, sinh mẫu trả lời, dashboard insight.",
-              "audience": [
-                "trienkhai"
-              ],
-              "level": "Nâng cao",
-              "lang": "VI",
-              "minutes": 20,
-              "shared": true
+              "shared": true,
+              "created": "2026-09-29"
             },
             {
               "token": "Kg0jwMF1fiKDbgksds6cp6GfnDh",
@@ -266,37 +229,66 @@
               "level": "Cơ bản",
               "lang": "VI",
               "minutes": 6,
-              "shared": true
+              "shared": true,
+              "created": "2026-08-10"
+            },
+            {
+              "token": "LrV7w3iFfivDs3kzv6OclzWsnDE",
+              "title": "Bắt đầu với Lark AI",
+              "desc": "Bản đồ tổng thể toàn bộ năng lực AI: Knowledge AI, ghi chú và dịch trong họp, điền form bằng giọng nói, nhập liệu AI, trường AI của Base, plugin OpenClaw, Lark CLI và AnyGen. Đọc trước để biết còn những gì.",
+              "audience": [
+                "trienkhai"
+              ],
+              "level": "Cơ bản",
+              "lang": "VI",
+              "minutes": 20,
+              "shared": true,
+              "created": "2026-07-01"
+            },
+            {
+              "token": "O8svwzGCcilsAVkg1dhc4iDdnNe",
+              "title": "AnyGen",
+              "desc": "AnyGen là gì, khác gì công cụ AI phổ thông, làm được việc gì, và ba bước bắt đầu nhanh gồm tạo nội dung, chuyển đổi chia sẻ, tái sử dụng thành tri thức.",
+              "audience": [
+                "enduser"
+              ],
+              "level": "Cơ bản",
+              "lang": "VI",
+              "minutes": 9,
+              "shared": true,
+              "created": "2026-03-31"
+            },
+            {
+              "token": "WvCywIkwriX04TkPh5scl4xHnv1",
+              "title": "Lark Knowledge AI (tóm tắt)",
+              "desc": "Trợ lý hỏi đáp trên dữ liệu doanh nghiệp. Sáu tình huống thực tế từ kiểm tra tiến độ dự án tới tra cứu SOP, kèm FAQ về nguồn dữ liệu, phạm vi quyền truy cập và chuyện dữ liệu có bị dùng để huấn luyện hay không.",
+              "audience": [
+                "enduser"
+              ],
+              "level": "Cơ bản",
+              "lang": "VI",
+              "minutes": 5,
+              "shared": true,
+              "created": "2026-03-30"
+            },
+            {
+              "token": "A3sDwmobbiiuiFksAEycYkDRnAh",
+              "title": "AI trong Lark Base (tổng hợp)",
+              "desc": "Tổng quan AI tích hợp sẵn trong Base và bài toán chi phí, rồi chín bước dựng trọn một hệ thống Voice of Customer bằng AI: tóm tắt phản hồi, tạo ticket, gắn nhãn, dịch, sinh mẫu trả lời, dashboard insight.",
+              "audience": [
+                "trienkhai"
+              ],
+              "level": "Nâng cao",
+              "lang": "VI",
+              "minutes": 20,
+              "shared": true,
+              "created": "2025-09-05"
             }
           ]
         },
         {
           "name": "AI bên thứ ba trên Base",
           "docs": [
-            {
-              "token": "HxYbwfeJkiqGpikDNkPcj81NnOb",
-              "title": "Danh mục ứng dụng AI bên thứ ba",
-              "desc": "Bảng so sánh các ứng dụng AI cắm vào Base theo mục tiêu sử dụng, one pager, cách đăng ký dùng thử và chi phí. Vào đây trước rồi mới mở từng giải pháp bên dưới.",
-              "audience": [
-                "trienkhai"
-              ],
-              "level": "Trung cấp",
-              "lang": "VI",
-              "minutes": 6,
-              "shared": true
-            },
-            {
-              "token": "TUi6wQRUIiUFg3kggGkcAoyMni2",
-              "title": "DeepSeek và OpenAI cho Base",
-              "desc": "Cấu hình AI Field Shortcuts với DeepSeek R1 và OpenAI, cách lấy API key ở BytePlus và OpenAI, kèm bốn ca thực tế là CRM, VOC, tuyển dụng và nghiên cứu dữ liệu.",
-              "audience": [
-                "trienkhai"
-              ],
-              "level": "Nâng cao",
-              "lang": "VI",
-              "minutes": 30,
-              "shared": true
-            },
             {
               "token": "Vw4lwlX2fi3iI1kj2gOcv3mGnwh",
               "title": "XRan: trích xuất dữ liệu đa phương thức",
@@ -307,7 +299,8 @@
               "level": "Nâng cao",
               "lang": "VI",
               "minutes": 15,
-              "shared": true
+              "shared": true,
+              "created": "2025-09-08"
             },
             {
               "token": "QnUfwrXmpiO1sBkplxBcuiIJnCc",
@@ -319,7 +312,8 @@
               "level": "Nâng cao",
               "lang": "VI",
               "minutes": 10,
-              "shared": true
+              "shared": true,
+              "created": "2025-09-08"
             },
             {
               "token": "YRziwOYjBi9t1LkF5Tgcrr8qnoc",
@@ -331,7 +325,34 @@
               "level": "Nâng cao",
               "lang": "VI",
               "minutes": 10,
-              "shared": true
+              "shared": true,
+              "created": "2025-09-08"
+            },
+            {
+              "token": "HxYbwfeJkiqGpikDNkPcj81NnOb",
+              "title": "Danh mục ứng dụng AI bên thứ ba",
+              "desc": "Bảng so sánh các ứng dụng AI cắm vào Base theo mục tiêu sử dụng, one pager, cách đăng ký dùng thử và chi phí. Vào đây trước rồi mới mở từng giải pháp.",
+              "audience": [
+                "trienkhai"
+              ],
+              "level": "Trung cấp",
+              "lang": "VI",
+              "minutes": 6,
+              "shared": true,
+              "created": "2025-09-05"
+            },
+            {
+              "token": "TUi6wQRUIiUFg3kggGkcAoyMni2",
+              "title": "DeepSeek và OpenAI cho Base",
+              "desc": "Cấu hình AI Field Shortcuts với DeepSeek R1 và OpenAI, cách lấy API key ở BytePlus và OpenAI, kèm bốn ca thực tế là CRM, VOC, tuyển dụng và nghiên cứu dữ liệu.",
+              "audience": [
+                "trienkhai"
+              ],
+              "level": "Nâng cao",
+              "lang": "VI",
+              "minutes": 30,
+              "shared": true,
+              "created": "2025-09-04"
             }
           ]
         }
@@ -346,43 +367,6 @@
       "lead": "Phần IT và ban lãnh đạo của khách sẽ hỏi. Nên chuẩn bị trước khi vào vòng đánh giá bảo mật.",
       "docs": [
         {
-          "token": "JK3LwhT8kiCD0EkbBBZcaRk4nkg",
-          "title": "Lark Admin Console",
-          "desc": "Tài liệu dài nhất trong thư viện. Các loại quản trị viên, dựng phòng ban và mời thành viên, tạo vai trò quản trị, rồi lần lượt bảo mật, tuân thủ, tuỳ chỉnh thương hiệu và bộ báo cáo sử dụng.",
-          "audience": [
-            "admin"
-          ],
-          "level": "Nâng cao",
-          "lang": "VI",
-          "minutes": 40,
-          "shared": true
-        },
-        {
-          "token": "Cc70wbPvOikaCAkZIQccfOCAnkb",
-          "title": "Quản trị bảo mật Lark AI Agent",
-          "desc": "Phân tích rủi ro theo mô hình triển khai AI Agent, kiến trúc an toàn của AnyCross và OpenClaw, phương án kiểm soát tầng tiếp nhận gồm uỷ quyền ứng dụng và kiểm soát quyền API, cùng phần audit vận hành.",
-          "audience": [
-            "admin",
-            "trienkhai"
-          ],
-          "level": "Nâng cao",
-          "lang": "VI",
-          "minutes": 20,
-          "shared": true
-        },
-        {
-          "token": "A4jrwr7EWihqyxkjPJMc1MK8nKb",
-          "title": "AI Agent Security Governance (English)",
-          "desc": "Bản tiếng Anh cùng nội dung, dùng khi đội bảo mật của khách yêu cầu tài liệu tiếng Anh cho vòng thẩm định.",
-          "audience": [
-            "admin"
-          ],
-          "level": "Nâng cao",
-          "lang": "EN",
-          "minutes": 15,
-          "shared": true
-        },
-        {
           "token": "ZV1iweZd0i6fMukaMmJcT5aenOg",
           "title": "Năng lực và bảo mật của Lark CLI",
           "desc": "Lark CLI làm được gì trên từng miền nghiệp vụ, hai chế độ danh tính người dùng và ứng dụng, cơ chế kiểm soát quyền và audit, cùng các nguyên tắc dùng an toàn như đặc quyền tối thiểu. Hợp để gửi đội IT khi khách hỏi về AI Agent.",
@@ -393,7 +377,8 @@
           "level": "Trung cấp",
           "lang": "VI",
           "minutes": 10,
-          "shared": true
+          "shared": true,
+          "created": "2026-08-10"
         },
         {
           "token": "ODK0wu2e3iIqpwk9gXucsgNDnic",
@@ -406,7 +391,48 @@
           "lang": "EN",
           "minutes": 12,
           "shared": true,
-          "kind": "file"
+          "kind": "file",
+          "created": "2026-08-01"
+        },
+        {
+          "token": "Cc70wbPvOikaCAkZIQccfOCAnkb",
+          "title": "Quản trị bảo mật Lark AI Agent",
+          "desc": "Phân tích rủi ro theo mô hình triển khai AI Agent, kiến trúc an toàn của AnyCross và OpenClaw, phương án kiểm soát tầng tiếp nhận gồm uỷ quyền ứng dụng và kiểm soát quyền API, cùng phần audit vận hành.",
+          "audience": [
+            "admin",
+            "trienkhai"
+          ],
+          "level": "Nâng cao",
+          "lang": "VI",
+          "minutes": 20,
+          "shared": true,
+          "created": "2026-03-31"
+        },
+        {
+          "token": "A4jrwr7EWihqyxkjPJMc1MK8nKb",
+          "title": "AI Agent Security Governance (English)",
+          "desc": "Bản tiếng Anh cùng nội dung, dùng khi đội bảo mật của khách yêu cầu tài liệu tiếng Anh cho vòng thẩm định.",
+          "audience": [
+            "admin"
+          ],
+          "level": "Nâng cao",
+          "lang": "EN",
+          "minutes": 15,
+          "shared": true,
+          "created": "2026-03-31"
+        },
+        {
+          "token": "JK3LwhT8kiCD0EkbBBZcaRk4nkg",
+          "title": "Lark Admin Console",
+          "desc": "Tài liệu dài nhất trong thư viện. Các loại quản trị viên, dựng phòng ban và mời thành viên, tạo vai trò quản trị, rồi lần lượt bảo mật, tuân thủ, tuỳ chỉnh thương hiệu và bộ báo cáo sử dụng.",
+          "audience": [
+            "admin"
+          ],
+          "level": "Nâng cao",
+          "lang": "VI",
+          "minutes": 40,
+          "shared": true,
+          "created": "2025-05-21"
         }
       ]
     },
@@ -437,41 +463,17 @@
       ],
       "docs": [
         {
-          "token": "OHPgwIx2LiOdBUkpUrWcZAs0nEg",
-          "title": "Cần hỗ trợ thì tìm ai",
-          "desc": "Bốn kênh theo thứ tự ưu tiên: Lark Help Center, cộng đồng người dùng, hỗ trợ khách hàng, và cộng đồng developer cho vấn đề AnyCross hoặc API. Kèm ảnh từng bước mở Help Center.",
-          "audience": [
-            "enduser",
-            "admin"
-          ],
-          "level": "Cơ bản",
-          "lang": "VI",
-          "minutes": 4,
-          "shared": true
-        },
-        {
-          "token": "M9DkwagsSiHtNckBv5UcPhb8nMb",
-          "title": "Cách lấy UID và MessID",
-          "desc": "Bật debug mode, copy user ID và message ID. Hai thông tin bắt buộc khi mở ticket về lỗi tin nhắn.",
+          "token": "TZWqwUpN6igEtPkUhKdcJLjLndh",
+          "title": "AHA Doctor cho Mac",
+          "desc": "Công cụ tự chẩn đoán và sửa các lỗi thường gặp của Lark trên Mac, nhất là lỗi mạng. Có link tải bản x86 và arm64, video thao tác và cách gửi kết quả chẩn đoán cho đội hỗ trợ.",
           "audience": [
             "admin"
           ],
           "level": "Cơ bản",
           "lang": "VI",
-          "minutes": 2,
-          "shared": true
-        },
-        {
-          "token": "Xm2KwKLCeiVzS7kIC4FcKA3NnD1",
-          "title": "Cách lấy file HAR",
-          "desc": "Ghi lại toàn bộ request mạng lúc lỗi xảy ra. Đính kèm file này giúp đội kỹ thuật tái hiện nhanh hơn nhiều so với mô tả bằng lời.",
-          "audience": [
-            "admin"
-          ],
-          "level": "Cơ bản",
-          "lang": "VI",
-          "minutes": 3,
-          "shared": true
+          "minutes": 5,
+          "shared": true,
+          "created": "2026-08-28"
         },
         {
           "token": "SERywKxG6idQxwkTC5gceuV9nqc",
@@ -483,19 +485,48 @@
           "level": "Cơ bản",
           "lang": "VI",
           "minutes": 3,
-          "shared": true
+          "shared": true,
+          "created": "2025-07-30"
         },
         {
-          "token": "TZWqwUpN6igEtPkUhKdcJLjLndh",
-          "title": "AHA Doctor cho Mac",
-          "desc": "Công cụ tự chẩn đoán và sửa các lỗi thường gặp của Lark trên Mac, nhất là lỗi mạng. Có link tải bản x86 và arm64, video thao tác và cách gửi kết quả chẩn đoán cho đội hỗ trợ.",
+          "token": "OHPgwIx2LiOdBUkpUrWcZAs0nEg",
+          "title": "Cần hỗ trợ thì tìm ai",
+          "desc": "Bốn kênh theo thứ tự ưu tiên: Lark Help Center, cộng đồng người dùng, hỗ trợ khách hàng, và cộng đồng developer cho vấn đề AnyCross hoặc API. Kèm ảnh từng bước mở Help Center.",
+          "audience": [
+            "enduser",
+            "admin"
+          ],
+          "level": "Cơ bản",
+          "lang": "VI",
+          "minutes": 4,
+          "shared": true,
+          "created": "2025-07-29"
+        },
+        {
+          "token": "M9DkwagsSiHtNckBv5UcPhb8nMb",
+          "title": "Cách lấy UID và MessID",
+          "desc": "Bật debug mode, copy user ID và message ID. Hai thông tin bắt buộc khi mở ticket về lỗi tin nhắn.",
           "audience": [
             "admin"
           ],
           "level": "Cơ bản",
           "lang": "VI",
-          "minutes": 5,
-          "shared": true
+          "minutes": 2,
+          "shared": true,
+          "created": "2025-07-29"
+        },
+        {
+          "token": "Xm2KwKLCeiVzS7kIC4FcKA3NnD1",
+          "title": "Cách lấy file HAR",
+          "desc": "Ghi lại toàn bộ request mạng lúc lỗi xảy ra. Đính kèm file này giúp đội kỹ thuật tái hiện nhanh hơn nhiều so với mô tả bằng lời.",
+          "audience": [
+            "admin"
+          ],
+          "level": "Cơ bản",
+          "lang": "VI",
+          "minutes": 3,
+          "shared": true,
+          "created": "2025-07-29"
         }
       ]
     }
