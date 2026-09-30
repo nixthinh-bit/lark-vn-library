@@ -80,12 +80,10 @@ LEVEL = {"Cơ bản": "lv1", "Trung cấp": "lv2", "Nâng cao": "lv3"}
 
 
 def attrs(doc):
-    """Thuoc tinh chung cho moi phan tu tai lieu, dung cho tim kiem va loc."""
-    aud = " ".join(doc["audience"])
-    hay = f'{doc["title"]} {doc["desc"]} {doc["level"]} {doc["lang"]}'.lower()
+    """Thuoc tinh chung cho moi phan tu tai lieu, dung cho tab loc chu de."""
     return (
         f'href="{WIKI}{esc(doc["token"])}" target="_blank" rel="noopener" '
-        f'data-aud="{esc(aud)}" data-hay="{esc(hay)}"'
+        f'data-topics="{esc(" ".join(doc.get("topics", [])))}"'
     )
 
 
@@ -205,9 +203,11 @@ for g in data["groups"]:
 """
     )
 
-chips = "".join(
-    f'<button type="button" class="chip" data-chip="{esc(a["id"])}">{esc(a["label"])}</button>'
-    for a in data["audiences"]
+all_docs = [d for g in data["groups"] for d in docs_of(g)]
+topic_tabs = "".join(
+    f'<button type="button" class="topic" data-topic="{esc(t["id"])}" aria-pressed="false">'
+    f'{esc(t["label"])}<span>{sum(t["id"] in d.get("topics", []) for d in all_docs)}</span></button>'
+    for t in data["topics"]
 )
 
 HTML = f"""<!DOCTYPE html>
@@ -284,27 +284,20 @@ nav::-webkit-scrollbar {{ display: none; }}
 .hero h1 {{ font-size: 40px; line-height: 1.16; letter-spacing: -.03em; font-weight: 700; }}
 .hero h1 em {{ font-style: normal; color: var(--brand); }}
 .hero p {{ margin-top: 14px; font-size: 16px; color: var(--muted); max-width: 62ch; }}
-.stats {{ display: flex; gap: 46px; flex-wrap: wrap; margin-top: 34px; }}
-.stat b {{ display: block; font-size: 26px; font-weight: 700; letter-spacing: -.02em; }}
-.stat span {{ font-size: 12.5px; color: var(--muted); }}
-
-.controls {{ display: flex; gap: 12px; flex-wrap: wrap; margin-top: 40px; }}
-#q {{
-  flex: 1; min-width: 250px; padding: 12px 16px; font: inherit; font-size: 14px;
-  border: 1px solid var(--line); border-radius: var(--r-sm); outline: none; color: var(--text);
-  background: #fff; transition: border-color .2s, box-shadow .2s;
-}}
-#q:focus {{ border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-soft); }}
-#q::placeholder {{ color: var(--muted); }}
-.chips {{ display: flex; gap: 8px; flex-wrap: wrap; }}
-.chip {{
-  -webkit-appearance: none; appearance: none;
-  padding: 9px 16px; font: inherit; font-size: 13px; font-weight: 500; color: var(--muted);
+.topics {{ display: flex; gap: 10px; flex-wrap: wrap; margin-top: 38px; }}
+.topic {{
+  -webkit-appearance: none; appearance: none; display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 20px; font: inherit; font-size: 14.5px; font-weight: 600; color: var(--text);
   background: #fff; border: 1px solid var(--line); border-radius: var(--r-full);
   transition: border-color .18s, color .18s, background .18s;
 }}
-.chip:hover {{ border-color: var(--brand); color: var(--brand); }}
-.chip.on {{ background: var(--brand); border-color: var(--brand); color: #fff; }}
+.topic span {{
+  min-width: 24px; padding: 1px 7px; font-size: 12px; font-weight: 600; text-align: center;
+  color: var(--brand-dk); background: var(--brand-soft); border-radius: var(--r-full);
+}}
+.topic:hover {{ border-color: var(--brand); color: var(--brand); }}
+.topic.on {{ background: var(--brand); border-color: var(--brand); color: #fff; }}
+.topic.on span {{ background: rgba(255,255,255,.22); color: #fff; }}
 
 /* ============ section shell ============ */
 .section {{ padding: 74px 0; scroll-margin-top: 62px; }}
@@ -431,8 +424,7 @@ footer b {{ color: #cbd3e2; }}
 @media (max-width: 600px) {{
   .wrap {{ padding: 0 16px; }}
   .head-in {{ gap: 16px; }}
-  .stats {{ gap: 26px; }}
-  .stat b {{ font-size: 21px; }}
+  .topic {{ padding: 10px 16px; font-size: 13.5px; }}
   .grid {{ grid-template-columns: 1fr; }}
   .chans {{ grid-template-columns: 1fr; }}
   .feature {{ padding: 26px 22px 24px; }}
@@ -464,19 +456,11 @@ footer b {{ color: #cbd3e2; }}
     <h1>Thư viện Lark <em>tiếng Việt</em></h1>
     <p>{esc(meta['subtitle'])}</p>
   </div>
-  <div class="stats">
-    <div class="stat"><b>{total_docs}</b><span>tài liệu</span></div>
-    <div class="stat"><b>{len(data['groups'])}</b><span>chủ đề</span></div>
-    <div class="stat"><b>{esc(meta['updated'])}</b><span>cập nhật gần nhất</span></div>
-  </div>
-  <div class="controls">
-    <input id="q" type="search" placeholder="Tìm theo tên tài liệu, chủ đề, từ khoá..." autocomplete="off">
-    <div class="chips">{chips}</div>
-  </div>
+  <div class="topics" role="group" aria-label="Lọc theo chủ đề">{topic_tabs}</div>
 </div>
 
 {''.join(sections)}
-<div class="wrap"><div class="empty" id="empty">Không có tài liệu nào khớp. Thử từ khoá khác hoặc bỏ bộ lọc vai trò.</div></div>
+<div class="wrap"><div class="empty" id="empty">Không có tài liệu nào thuộc chủ đề này.</div></div>
 
 <footer>
   <div class="wrap">
@@ -487,30 +471,25 @@ footer b {{ color: #cbd3e2; }}
 
 <script>
 (function () {{
-  var q = document.getElementById('q');
-  var chips = [].slice.call(document.querySelectorAll('.chip'));
+  var topics = [].slice.call(document.querySelectorAll('.topic'));
+  var subtabs = [].slice.call(document.querySelectorAll('.tabs'));
   var tabs = [].slice.call(document.querySelectorAll('.tab'));
   var items = [].slice.call(document.querySelectorAll('.item'));
   var sections = [].slice.call(document.querySelectorAll('.section'));
   var navs = [].slice.call(document.querySelectorAll('.nav-item'));
   var empty = document.getElementById('empty');
-  var aud = null, tab = 'all';
-
-  function norm(s) {{
-    return s.toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').replace(/đ/g, 'd');
-  }}
+  var topic = null, tab = 'all';
 
   function apply() {{
-    var term = norm(q.value.trim());
     var shown = 0;
     items.forEach(function (el) {{
-      var okT = !term || norm(el.dataset.hay).indexOf(term) > -1;
-      var okA = !aud || el.dataset.aud.split(' ').indexOf(aud) > -1;
-      var okG = !el.dataset.sg || tab === 'all' || el.dataset.sg === tab;
-      var on = okT && okA && okG;
+      var okT = !topic || el.dataset.topics.split(' ').indexOf(topic) > -1;
+      var okG = topic || !el.dataset.sg || tab === 'all' || el.dataset.sg === tab;
+      var on = okT && okG;
       el.classList.toggle('hide', !on);
       if (on) shown++;
     }});
+    subtabs.forEach(function (t) {{ t.classList.toggle('hide', !!topic); }});
     sections.forEach(function (s) {{
       s.classList.toggle('hide', s.querySelectorAll('.item:not(.hide)').length === 0);
     }});
@@ -521,11 +500,14 @@ footer b {{ color: #cbd3e2; }}
     empty.style.display = shown === 0 ? 'block' : 'none';
   }}
 
-  q.addEventListener('input', apply);
-  chips.forEach(function (c) {{
-    c.addEventListener('click', function () {{
-      aud = aud === c.dataset.chip ? null : c.dataset.chip;
-      chips.forEach(function (o) {{ o.classList.toggle('on', o.dataset.chip === aud); }});
+  // Topic tabs toggle: click the active one again to show everything.
+  topics.forEach(function (b) {{
+    b.addEventListener('click', function () {{
+      topic = topic === b.dataset.topic ? null : b.dataset.topic;
+      topics.forEach(function (o) {{
+        var on = o.dataset.topic === topic;
+        o.classList.toggle('on', on); o.setAttribute('aria-pressed', on);
+      }});
       apply();
     }});
   }});

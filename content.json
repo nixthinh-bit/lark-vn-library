@@ -40,7 +40,10 @@
           "lang": "VI",
           "minutes": 10,
           "shared": true,
-          "created": "2025-08-28"
+          "created": "2025-08-28",
+          "topics": [
+            "tinhnang"
+          ]
         },
         {
           "token": "WGgzwj3deiBwGZka2Kic4TH6nMf",
@@ -53,7 +56,8 @@
           "lang": "VI",
           "minutes": 7,
           "shared": true,
-          "created": "2025-08-10"
+          "created": "2025-08-10",
+          "topics": []
         }
       ]
     },
@@ -76,7 +80,8 @@
           "lang": "VI",
           "minutes": 3,
           "shared": true,
-          "created": "2026-06-03"
+          "created": "2026-06-03",
+          "topics": []
         },
         {
           "token": "COHkwW7xviUiIhkBrtzcD2upnOg",
@@ -90,7 +95,10 @@
           "lang": "VI",
           "minutes": 10,
           "shared": true,
-          "created": "2026-06-03"
+          "created": "2026-06-03",
+          "topics": [
+            "tinhnang"
+          ]
         },
         {
           "token": "QQTMwLKj9iUrIAk3nHPcv6rJnke",
@@ -103,7 +111,10 @@
           "lang": "VI",
           "minutes": 30,
           "shared": true,
-          "created": "2025-10-09"
+          "created": "2025-10-09",
+          "topics": [
+            "tinhnang"
+          ]
         }
       ]
     },
@@ -127,7 +138,10 @@
           "lang": "VI",
           "minutes": 40,
           "shared": true,
-          "created": "2026-08-10"
+          "created": "2026-08-10",
+          "topics": [
+            "tinhnang"
+          ]
         },
         {
           "token": "S7XQwykI5iEfJpkWj6ScwgU2noc",
@@ -140,7 +154,10 @@
           "lang": "VI",
           "minutes": 20,
           "shared": true,
-          "created": "2025-10-09"
+          "created": "2025-10-09",
+          "topics": [
+            "tinhnang"
+          ]
         }
       ]
     },
@@ -163,7 +180,10 @@
           "lang": "VI",
           "minutes": 17,
           "shared": true,
-          "created": "2026-06-26"
+          "created": "2026-06-26",
+          "topics": [
+            "tinhnang"
+          ]
         },
         {
           "token": "LPGjw4PYui3egRkisvjcUnypnYf",
@@ -176,7 +196,10 @@
           "lang": "VI",
           "minutes": 15,
           "shared": true,
-          "created": "2025-05-20"
+          "created": "2025-05-20",
+          "topics": [
+            "tinhnang"
+          ]
         },
         {
           "token": "MupcwDh8ui0QzOkBWFNcOyM4nid",
@@ -189,7 +212,10 @@
           "lang": "VI",
           "minutes": 20,
           "shared": true,
-          "created": "2025-05-19"
+          "created": "2025-05-19",
+          "topics": [
+            "tinhnang"
+          ]
         }
       ]
     },
@@ -216,7 +242,10 @@
               "lang": "VI",
               "minutes": 8,
               "shared": true,
-              "created": "2026-09-29"
+              "created": "2026-09-29",
+              "topics": [
+                "ai"
+              ]
             },
             {
               "token": "Kg0jwMF1fiKDbgksds6cp6GfnDh",
@@ -230,7 +259,10 @@
               "lang": "VI",
               "minutes": 6,
               "shared": true,
-              "created": "2026-08-10"
+              "created": "2026-08-10",
+              "topics": [
+                "ai"
+              ]
             },
             {
               "token": "LrV7w3iFfivDs3kzv6OclzWsnDE",
@@ -243,7 +275,10 @@
               "lang": "VI",
               "minutes": 20,
               "shared": true,
-              "created": "2026-07-01"
+              "created": "2026-07-01",
+              "topics": [
+                "ai"
+              ]
             },
             {
               "token": "O8svwzGCcilsAVkg1dhc4iDdnNe",
@@ -256,7 +291,10 @@
               "lang": "VI",
               "minutes": 9,
               "shared": true,
-              "created": "2026-03-31"
+              "created": "2026-03-31",
+              "topics": [
+                "ai"
+              ]
             },
             {
               "token": "WvCywIkwriX04TkPh5scl4xHnv1",
@@ -269,7 +307,10 @@
               "lang": "VI",
               "minutes": 5,
               "shared": true,
-              "created": "2026-03-30"
+              "created": "2026-03-30",
+              "topics": [
+                "ai"
+              ]
             },
             {
               "token": "A3sDwmobbiiuiFksAEycYkDRnAh",
@@ -282,7 +323,10 @@
               "lang": "VI",
               "minutes": 20,
               "shared": true,
-              "created": "2025-09-05"
+              "created": "2025-09-05",
+              "topics": [
+                "ai"
+              ]
             }
           ]
         },
@@ -300,7 +344,10 @@
               "lang": "VI",
               "minutes": 15,
               "shared": true,
-              "created": "2025-09-08"
+              "created": "2025-09-08",
+              "topics": [
+                "ai"
+              ]
             },
             {
               "token": "QnUfwrXmpiO1sBkplxBcuiIJnCc",
@@ -313,7 +360,10 @@
               "lang": "VI",
               "minutes": 10,
               "shared": true,
-              "created": "2025-09-08"
+              "created": "2025-09-08",
+              "topics": [
+                "ai"
+              ]
             },
             {
               "token": "YRziwOYjBi9t1LkF5Tgcrr8qnoc",
@@ -326,7 +376,10 @@
               "lang": "VI",
               "minutes": 10,
               "shared": true,
-              "created": "2025-09-08"
+              "created": "2025-09-08",
+              "topics": [
+                "ai"
+              ]
             },
             {
               "token": "HxYbwfeJkiqGpikDNkPcj81NnOb",
@@ -339,7 +392,10 @@
               "lang": "VI",
               "minutes": 6,
               "shared": true,
-              "created": "2025-09-05"
+              "created": "2025-09-05",
+              "topics": [
+                "ai"
+              ]
             },
             {
               "token": "TUi6wQRUIiUFg3kggGkcAoyMni2",
@@ -352,7 +408,10 @@
               "lang": "VI",
               "minutes": 30,
               "shared": true,
-              "created": "2025-09-04"
+              "created": "2025-09-04",
+              "topics": [
+                "ai"
+              ]
             }
           ]
         }
@@ -378,7 +437,10 @@
           "lang": "VI",
           "minutes": 10,
           "shared": true,
-          "created": "2026-08-10"
+          "created": "2026-08-10",
+          "topics": [
+            "ai"
+          ]
         },
         {
           "token": "ODK0wu2e3iIqpwk9gXucsgNDnic",
@@ -392,7 +454,10 @@
           "minutes": 12,
           "shared": true,
           "kind": "file",
-          "created": "2026-08-01"
+          "created": "2026-08-01",
+          "topics": [
+            "ai"
+          ]
         },
         {
           "token": "Cc70wbPvOikaCAkZIQccfOCAnkb",
@@ -406,7 +471,10 @@
           "lang": "VI",
           "minutes": 20,
           "shared": true,
-          "created": "2026-03-31"
+          "created": "2026-03-31",
+          "topics": [
+            "ai"
+          ]
         },
         {
           "token": "A4jrwr7EWihqyxkjPJMc1MK8nKb",
@@ -419,7 +487,10 @@
           "lang": "EN",
           "minutes": 15,
           "shared": true,
-          "created": "2026-03-31"
+          "created": "2026-03-31",
+          "topics": [
+            "ai"
+          ]
         },
         {
           "token": "JK3LwhT8kiCD0EkbBBZcaRk4nkg",
@@ -432,7 +503,10 @@
           "lang": "VI",
           "minutes": 40,
           "shared": true,
-          "created": "2025-05-21"
+          "created": "2025-05-21",
+          "topics": [
+            "tinhnang"
+          ]
         }
       ]
     },
@@ -473,7 +547,10 @@
           "lang": "VI",
           "minutes": 5,
           "shared": true,
-          "created": "2026-08-28"
+          "created": "2026-08-28",
+          "topics": [
+            "kythuat"
+          ]
         },
         {
           "token": "SERywKxG6idQxwkTC5gceuV9nqc",
@@ -486,7 +563,10 @@
           "lang": "VI",
           "minutes": 3,
           "shared": true,
-          "created": "2025-07-30"
+          "created": "2025-07-30",
+          "topics": [
+            "kythuat"
+          ]
         },
         {
           "token": "OHPgwIx2LiOdBUkpUrWcZAs0nEg",
@@ -500,7 +580,8 @@
           "lang": "VI",
           "minutes": 4,
           "shared": true,
-          "created": "2025-07-29"
+          "created": "2025-07-29",
+          "topics": []
         },
         {
           "token": "M9DkwagsSiHtNckBv5UcPhb8nMb",
@@ -513,7 +594,10 @@
           "lang": "VI",
           "minutes": 2,
           "shared": true,
-          "created": "2025-07-29"
+          "created": "2025-07-29",
+          "topics": [
+            "kythuat"
+          ]
         },
         {
           "token": "Xm2KwKLCeiVzS7kIC4FcKA3NnD1",
@@ -526,9 +610,26 @@
           "lang": "VI",
           "minutes": 3,
           "shared": true,
-          "created": "2025-07-29"
+          "created": "2025-07-29",
+          "topics": [
+            "kythuat"
+          ]
         }
       ]
+    }
+  ],
+  "topics": [
+    {
+      "id": "ai",
+      "label": "Liên quan đến AI"
+    },
+    {
+      "id": "kythuat",
+      "label": "Kiểm tra kỹ thuật"
+    },
+    {
+      "id": "tinhnang",
+      "label": "Tính năng của Lark"
     }
   ]
 }

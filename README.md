@@ -13,7 +13,8 @@ Content lives in `content.json`, not in the HTML. To add or change a document:
 
 1. Edit `content.json`: a document entry has title, description, audience, level, language,
    read time, a `shared` flag, and a `created` date (YYYY-MM-DD, the wiki node's creation date).
-   Cards in each group are sorted newest first by `created`. You can also add a new entry or a whole new group.
+   Cards in each group are sorted newest first by `created`.
+   `topics` (`ai`, `kythuat`, `tinhnang`) decides which of the three filter tabs at the top shows the doc. You can also add a new entry or a whole new group.
 2. Rebuild:
 
    ```
