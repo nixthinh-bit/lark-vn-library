@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Thư viện Lark tiếng Việt",
-    "subtitle": "Tuyển tập tài liệu Lark dành cho partner triển khai và khách hàng tại Việt Nam. Chọn chủ đề, bấm vào thẻ để mở tài liệu gốc trên Lark.",
+    "subtitle": "Tài liệu tiếng Việt để dùng và triển khai Lark, từ cài đặt, Base, OKR, phê duyệt đến AI và bảo mật. Tổng hợp bởi Thinh Le, CSM - Creativity Service Platform, phụ trách Lark và Dola tại VN.",
     "credit": "Được tổng hợp và xây dựng bởi Thinh Le (Customer Success Manager - Lark, Bytedance)",
     "updated": "09/2026",
     "wiki_base": "https://bytedance.larkoffice.com/wiki/"
@@ -30,6 +30,20 @@
       "lead": "Dùng khi cần trả lời câu hỏi vì sao doanh nghiệp nên gom công cụ về một nền tảng.",
       "docs": [
         {
+          "token": "WGgzwj3deiBwGZka2Kic4TH6nMf",
+          "title": "Vì sao nên chọn Lark",
+          "desc": "Bài phân tích nỗi đau vận hành khi doanh nghiệp dùng quá nhiều công cụ rời rạc, Lark giải quyết bằng cách nào, kết quả đã đo được và bài toán chi phí. Tài liệu mở đầu tốt cho buổi gặp đầu tiên.",
+          "audience": [
+            "trienkhai"
+          ],
+          "level": "Cơ bản",
+          "lang": "VI",
+          "minutes": 7,
+          "shared": true,
+          "created": "2025-08-10",
+          "topics": []
+        },
+        {
           "token": "SDEBw7SqdiEN4dkpfHHclVjKnAO",
           "title": "Lark Favorite Tips and Tricks 2.0",
           "desc": "Tuyển tập mẹo theo từng khối tính năng: chat, lịch, họp, tài liệu. Mỗi khối gói trong 10 phút, hợp để làm nội dung buổi training nhập môn cho khách.",
@@ -44,22 +58,9 @@
           "topics": [
             "tinhnang"
           ]
-        },
-        {
-          "token": "WGgzwj3deiBwGZka2Kic4TH6nMf",
-          "title": "Vì sao nên chọn Lark",
-          "desc": "Bài phân tích nỗi đau vận hành khi doanh nghiệp dùng quá nhiều công cụ rời rạc, Lark giải quyết bằng cách nào, kết quả đã đo được và bài toán chi phí. Tài liệu mở đầu tốt cho buổi gặp đầu tiên.",
-          "audience": [
-            "trienkhai"
-          ],
-          "level": "Cơ bản",
-          "lang": "VI",
-          "minutes": 7,
-          "shared": true,
-          "created": "2025-08-10",
-          "topics": []
         }
-      ]
+      ],
+      "keep_order": true
     },
     {
       "id": "bat-dau",
@@ -227,7 +228,7 @@
       "name": "AI trong Lark",
       "template": "grid",
       "tint": false,
-      "lead": "Chia hai nhánh: năng lực AI có sẵn của Lark, và các giải pháp AI bên thứ ba cắm vào Base.",
+      "lead": "Chia ba nhánh: năng lực AI có sẵn của Lark, các giải pháp AI bên thứ ba cắm vào Base, và Dola work.",
       "subgroups": [
         {
           "name": "AI gốc của Lark",
@@ -416,6 +417,10 @@
               ]
             }
           ]
+        },
+        {
+          "name": "Dola work",
+          "docs": []
         }
       ]
     },
