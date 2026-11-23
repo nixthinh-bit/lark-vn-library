@@ -17,6 +17,11 @@ HERE = pathlib.Path(__file__).parent
 data = json.loads((HERE / "content.json").read_text(encoding="utf-8"))
 meta = data["meta"]
 
+# Docs flagged "hidden" stay in content.json but are not rendered anywhere.
+for _g in data["groups"]:
+    for _c in (_g["subgroups"] if "subgroups" in _g else [_g]):
+        _c["docs"] = [d for d in _c["docs"] if not d.get("hidden")]
+
 # Newest first within each group / subgroup, by wiki node creation date.
 for _g in data["groups"]:
     if _g.get("keep_order"):
@@ -689,6 +694,11 @@ D_CSS = """
 .rf h3 { font-size: 18px; line-height: 1.28; letter-spacing: -.015em; }
 .rf p { font-size: 13px; line-height: 1.55; color: #46557f; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
 .rf .time { margin-top: auto; color: #1d54e0; font-weight: 600; }
+/* bouncing hover */
+@keyframes bounce { 0% { translate: 0 0; } 28% { translate: 0 -16px; } 50% { translate: 0 2px; } 68% { translate: 0 -7px; } 84% { translate: 0 1px; } 100% { translate: 0 0; } }
+@media (prefers-reduced-motion: no-preference) {
+  .card:not(.soon):hover, .feature:hover, .dlink:hover, .rc:hover { animation: bounce .7s ease-out; }
+}
 .deco { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
 .di { position: absolute; height: auto; animation: spin-in .8s cubic-bezier(.34,1.56,.64,1) both, bob 3.6s ease-in-out .8s infinite alternate; filter: drop-shadow(0 8px 8px rgba(0,10,80,.3)); }
 .di.out { animation: spin-out .3s ease-in both; }
@@ -823,7 +833,9 @@ D_JS = """
   }});
 }})();
 """
-_ring = sorted(all_docs, key=lambda d: d.get("created", ""), reverse=True)
+# Newest first, but the Dola Work intro is pinned to the centre (first) slot.
+PIN = "S9XZwp1D2iGKJrkwY44ctdxnnLb"
+_ring = sorted(all_docs, key=lambda d: (d["token"] != PIN, "".join(chr(255 - ord(c)) for c in d.get("created", ""))))
 RING_JSON = json.dumps(
     [{"t": d["title"], "d": d["desc"], "u": WIKI + d["token"], "tp": d.get("topics", []),
       "m": d["minutes"], "l": d["level"], "lv": LEVEL.get(d["level"], "lv1")} for d in _ring],
