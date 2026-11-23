@@ -420,7 +420,76 @@
         },
         {
           "name": "Dola work",
-          "docs": []
+          "docs": [
+            {
+              "token": "S9XZwp1D2iGKJrkwY44ctdxnnLb",
+              "title": "Dola Work: Công việc tốt hơn bắt đầu với Dola",
+              "desc": "Dola Work là AI agent của ByteDance tích hợp sâu vào Lark, đăng nhập bằng tài khoản Lark. Giới thiệu bốn nâng cấp Ask, Create, Build, Operate kèm câu lệnh mẫu, so sánh với công cụ AI cá nhân, đối tượng được mời và chi phí.",
+              "audience": [
+                "enduser",
+                "trienkhai"
+              ],
+              "level": "Cơ bản",
+              "lang": "VI",
+              "minutes": 10,
+              "shared": true,
+              "created": "2026-11-09",
+              "topics": [
+                "ai"
+              ]
+            },
+            {
+              "token": "Or9NwxJf4ilihfkeHwIcAXWvnTg",
+              "title": "Dola Work Customer Deck",
+              "desc": "Bộ slide HTML giới thiệu Dola Work cho khách hàng, dùng để trình bày trong buổi gặp hoặc gửi kèm sau buổi demo.",
+              "audience": [
+                "trienkhai"
+              ],
+              "level": "Cơ bản",
+              "lang": "EN",
+              "minutes": 10,
+              "shared": true,
+              "kind": "file",
+              "created": "2026-11-18",
+              "topics": [
+                "ai"
+              ]
+            },
+            {
+              "token": "NVMcwlj41i6MIlkJQFycxi21nRb",
+              "title": "Connector TikTok for Business trong Dola",
+              "desc": "Kết nối Dola với TikTok Ads qua MCP để truy vấn, lập kế hoạch, tạo và tối ưu chiến dịch bằng ngôn ngữ tự nhiên. Bốn bước cài đặt và ủy quyền, prompt kiểm tra chỉ đọc và phạm vi khả năng hiện có.",
+              "audience": [
+                "enduser",
+                "trienkhai"
+              ],
+              "level": "Trung cấp",
+              "lang": "VI",
+              "minutes": 8,
+              "shared": true,
+              "created": "2026-11-18",
+              "topics": [
+                "ai"
+              ]
+            },
+            {
+              "token": "NLXcwhNSBivJQvkq3fscrd9dnXj",
+              "title": "Tải Lark 8.7.x",
+              "desc": "Link tải bản Lark 8.7.x cho Android, iOS, Windows và Mac kèm thời điểm phát hành từng bản. Phiên bản cần có để dùng Dola Work trong Lark.",
+              "audience": [
+                "enduser",
+                "admin"
+              ],
+              "level": "Cơ bản",
+              "lang": "EN",
+              "minutes": 1,
+              "shared": true,
+              "created": "2026-11-17",
+              "topics": [
+                "ai"
+              ]
+            }
+          ]
         }
       ]
     },
